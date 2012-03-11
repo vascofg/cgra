@@ -15,7 +15,7 @@
 	(2) Create a project in eclipse
 	File/New/C++ Project
 
-	(3) Upload the all the files from baseproject folder
+	(3) Upload all the files from baseproject folder
 	The folder that is inside in this repository
 	
 	(4) Add linker libraries in project properties
@@ -29,5 +29,10 @@
 		*tp1/part2 : solved exercice 5
 	(2) 2012-03-11 André Freitas
 		*README.TXT : added project description and basic setup guide
+	(3) 2012-03-11 Vasco Gonçalves
+		*tp1/part2 : solved extra exercice
+	(2) 2012-03-11 André Freitas
+		*tp1/part1 : solved lost exercices
+		*tp1/tosubmit : added all files for submission
 	
 
