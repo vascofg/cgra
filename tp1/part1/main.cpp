@@ -6,9 +6,8 @@
 #include <iostream>
 #include <exception>
 
-#include "CGFapplication.h"
+#include "CGF/CGFapplication.h"
 #include "TPscene.h"
-
 using std::cout;
 using std::exception;
 

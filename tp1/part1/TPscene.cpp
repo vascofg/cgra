@@ -1,7 +1,7 @@
 #include "TPscene.h"
-#include "CGFaxis.h"
-#include "CGFapplication.h"
-
+#include "CGF/CGFaxis.h"
+#include "CGF/CGFapplication.h"
+#include "ExampleObject.h"
 #include <math.h>
 
 float pi = acos(-1.0);
@@ -77,9 +77,12 @@ void TPscene::display()
                       0.0, 0.0, 0.0, 1.0};
 
 	// Multiplication of the previous transformations
-	// glMultMatrixf(tra);     // GT = GT * tra
-	// glMultMatrixf(rot);     // GT = GT * rot
-	// glMultMatrixf(sca);     // GT = GT * sca
+	//glMultMatrixf(rot);     // GT = GT * rot
+	//glMultMatrixf(tra);     // GT = GT * tra
+	//glMultMatrixf(sca);     // GT = GT * sca
+
+	//glRotatef(30,0,1,1);
+
 
 
 	// ---- END Geometric transformation section
@@ -88,14 +91,18 @@ void TPscene::display()
 	// ---- BEGIN Primitive drawing section
 
     // NOTE: the visible face of the polygon is determined by the order of the vertices
-	glBegin(GL_QUADS);
-		glVertex3d(0,0,0);
-		glVertex3d(4,0,0);
-		glVertex3d(4,3,0);
-		glVertex3d(0,3,0);
-	glEnd();
 
-	
+
+	//Draw triangle and a box
+	ExampleObject house;
+	glPushMatrix();
+	glTranslatef(0,5,0);
+	house.draw();
+	glPopMatrix();
+	glScalef(2,2,1);
+	glTranslatef(5,0,2);
+	house.draw();
+
 	// ---- END Primitive drawing section
 
 
