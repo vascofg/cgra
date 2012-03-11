@@ -8,6 +8,7 @@ class TPscene : public CGFscene
 public:
 	void init();
 	void display();
+	void drawTables();
 };
 
 #endif

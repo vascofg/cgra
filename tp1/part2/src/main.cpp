@@ -15,6 +15,7 @@ using std::exception;
 
 int main(int argc, char* argv[]) {
 
+	srand ( time(NULL) );
 	CGFapplication app = CGFapplication();
 
 	try {

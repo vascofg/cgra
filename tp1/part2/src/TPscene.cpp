@@ -2,12 +2,30 @@
 #include "CGFaxis.h"
 #include "CGFapplication.h"
 #include "myTable.h"
+#include "myChair.h"
 #include "myFloor.h"
 
 #include <math.h>
 
 float pi = acos(-1.0);
 float deg2rad = pi / 180.0;
+
+void TPscene::drawTables() {
+	myChair c[4][4];
+	myTable t[4][4];
+	for (int i = 0; i < 4; i++) {
+		for (int n = 0; n < 4; n++) {
+			glPushMatrix();
+			glTranslated(6 * n, 0, 6 * i);
+			t[i][n].draw();
+			glPushMatrix();
+			glTranslated(0, 0, -1.3);
+			c[i][n].draw();
+			glPopMatrix();
+			glPopMatrix();
+		}
+	}
+}
 
 void TPscene::init() {
 	// Enables lighting computations
@@ -79,17 +97,19 @@ void TPscene::display() {
 	// ---- BEGIN Primitive drawing section
 
 	// NOTE: the visible face of the polygon is determined by the order of the vertices
-	myTable t;
 	myFloor f;
 	glPushMatrix();
-	glTranslated(4, 0, 3);
-	t.draw();
+	glTranslated(12.5, 0, 12.5);
 	f.draw();
+	glPushMatrix();
+	glTranslated(-8.5, 0, -8.5);
+	drawTables();
+	glPopMatrix();
 	glPopMatrix();
 
 	// ---- END Primitive drawing section
 
-	// We have been drawing in a memory area that is not visible - the back buffer, 
+	// We have been drawing in a memory area that is not visible - the back buffer,
 	// while the graphics card is showing the contents of another buffer - the front buffer
 	// glutSwapBuffers() will swap pointers so that the back buffer becomes the front buffer and vice-versa
 	glutSwapBuffers();
