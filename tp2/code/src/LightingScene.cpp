@@ -19,6 +19,7 @@ float light1_pos[4] = {10.5, 6.0, 1.0, 1.0};
 float light2_pos[4] = {10.5, 6.0, 5.0, 1.0};
 float light3_pos[4] = {4, 6.0, 5.0, 1.0};
 
+
 // Global ambient light (do not confuse with ambient component of individual lights)
 float globalAmbientLight[4]= {0,0,0,0};
 
@@ -67,6 +68,25 @@ void LightingScene::init()
 	
 	light1->enable();
 	
+	// Added light2
+	light2 = new CGFlight(GL_LIGHT2, light2_pos);
+	light2->setAmbient(ambientNull);
+
+	light2->setKc(0);
+	light2->setKl(1.0);
+	light2->setKq(0);
+
+	light2->enable();
+
+	// Added light3
+	light3 = new CGFlight(GL_LIGHT3, light3_pos);
+	light3->setAmbient(ambientNull);
+	light3->setDiffuse(yellow);
+	light3->setSpecular(yellow);
+	light3->setKc(0);
+	light3->setKl(0);
+	light3->setKq(0.2);
+	light3->enable();
 	// Uncomment below to enable normalization of lighting normal vectors
 	glEnable (GL_NORMALIZE);
 
