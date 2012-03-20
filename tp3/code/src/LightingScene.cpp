@@ -197,7 +197,7 @@ void LightingScene::display() {
 	boardB->draw();
 	glPopMatrix();*/
 
-	myCylinder c(128,1);
+	myCylinder c(5,1);
 	c.draw();
 
 	// ---- END Primitive drawing section
