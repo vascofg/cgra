@@ -111,6 +111,8 @@ void LightingScene::display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	glShadeModel(GL_FLAT);
+
 	// Apply transformations corresponding to the camera position relative to the origin
 	CGFscene::activeCamera->applyView();
 
