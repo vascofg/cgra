@@ -2,14 +2,16 @@
 #define MY_CYLINDER
 
 #include "CGFobject.h"
+#include "cmath"
 
-class myCylinder : public CGFobject {
+class myCylinder: public CGFobject {
 
-	public:
-		myCylinder(int slices, int stacks/*, bool smooth*/);
+	int slices, stacks;
+
+public:
+	myCylinder(int slices, int stacks/*, bool smooth*/);
+	void draw();
 
 };
-
-
 
 #endif

@@ -3,6 +3,7 @@
 #include "CGFapplication.h"
 #include "myTable.h"
 #include "Plane.h"
+#include "myCylinder.h"
 
 #include <math.h>
 
@@ -43,7 +44,7 @@ float yellow[4] = { 1, 1, 0, 1 };
 
 void LightingScene::init() {
 	// Enables lighting computations
-	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
 
 	// Sets up some lighting parameters
 	// Computes lighting only using the front face normals and materials
@@ -111,17 +112,19 @@ void LightingScene::display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glShadeModel(GL_FLAT);
+	//glShadeModel(GL_FLAT);
 
 	// Apply transformations corresponding to the camera position relative to the origin
 	CGFscene::activeCamera->applyView();
 
-	light0->draw();
-	light1->draw();
 
 	// Draw axis
 	axis.draw();
 
+	/*
+
+	light0->draw();
+	light1->draw();
 	// ---- END Background, camera and axis setup
 
 	// ---- BEGIN Primitive drawing section
@@ -192,7 +195,10 @@ void LightingScene::display() {
 	glRotated(90.0, 1, 0, 0);
 	materialB->apply();
 	boardB->draw();
-	glPopMatrix();
+	glPopMatrix();*/
+
+	myCylinder c(128,1);
+	c.draw();
 
 	// ---- END Primitive drawing section
 
