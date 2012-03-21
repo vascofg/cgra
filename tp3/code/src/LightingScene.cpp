@@ -117,88 +117,94 @@ void LightingScene::display() {
 	// Apply transformations corresponding to the camera position relative to the origin
 	CGFscene::activeCamera->applyView();
 
-
 	// Draw axis
 	axis.draw();
 
 	/*
 
-	light0->draw();
-	light1->draw();
-	// ---- END Background, camera and axis setup
+	 light0->draw();
+	 light1->draw();
+	 // ---- END Background, camera and axis setup
 
-	// ---- BEGIN Primitive drawing section
+	 // ---- BEGIN Primitive drawing section
 
-	//First Table
-	glPushMatrix();
-	glTranslated(5, 0, 8);
-	table->draw();
-	glPopMatrix();
+	 //First Table
+	 glPushMatrix();
+	 glTranslated(5, 0, 8);
+	 table->draw();
+	 glPopMatrix();
 
-	//Second Table
-	glPushMatrix();
-	glTranslated(12, 0, 8);
-	table->draw();
-	glPopMatrix();
+	 //Second Table
+	 glPushMatrix();
+	 glTranslated(12, 0, 8);
+	 table->draw();
+	 glPopMatrix();
 
-	//Floor
-	// Coefficients for material
-	float amb[3] = {0, 0,  0.3984};
-	float dif[3] = {0, 0,  0.3984};
-	float spec[3] = {0, 0,  0.1};
-	float shininess = 12.f;
-	CGFappearance *materialF = new CGFappearance(amb, dif, spec, shininess);
-	glPushMatrix();
-	materialF->apply();
-	glTranslated(7.5, 0, 7.5);
-	glScaled(15, 0.2, 15);
-	wall->draw();
-	glPopMatrix();
+	 //Floor
+	 // Coefficients for material
+	 float amb[3] = {0, 0,  0.3984};
+	 float dif[3] = {0, 0,  0.3984};
+	 float spec[3] = {0, 0,  0.1};
+	 float shininess = 12.f;
+	 CGFappearance *materialF = new CGFappearance(amb, dif, spec, shininess);
+	 glPushMatrix();
+	 materialF->apply();
+	 glTranslated(7.5, 0, 7.5);
+	 glScaled(15, 0.2, 15);
+	 wall->draw();
+	 glPopMatrix();
 
-	//LeftWall
-	float amb1[3] = { 0.3984, 0, 0 };
-	float dif1[3] = { 0.3984, 0, 0};
-	float spec1[3] = { 0.20, 0, 0};
-	float shininess1 = 12.f;
-	CGFappearance *materialLw = new CGFappearance(amb1, dif1, spec1, shininess1);
+	 //LeftWall
+	 float amb1[3] = { 0.3984, 0, 0 };
+	 float dif1[3] = { 0.3984, 0, 0};
+	 float spec1[3] = { 0.20, 0, 0};
+	 float shininess1 = 12.f;
+	 CGFappearance *materialLw = new CGFappearance(amb1, dif1, spec1, shininess1);
 
-	glPushMatrix();
-	materialLw->apply();
-	glTranslated(0, 4, 7.5);
-	glRotated(-90.0, 0, 0, 1);
+	 glPushMatrix();
+	 materialLw->apply();
+	 glTranslated(0, 4, 7.5);
+	 glRotated(-90.0, 0, 0, 1);
 
-	glScaled(8, 0.2, 15);
-	wall->draw();
-	glPopMatrix();
+	 glScaled(8, 0.2, 15);
+	 wall->draw();
+	 glPopMatrix();
 
-	//PlaneWall
-	glPushMatrix();
-	glTranslated(7.5, 4, 0);
-	glRotated(90.0, 1, 0, 0);
-	glScaled(15, 0.2, 8);
-	wall->draw();
-	glPopMatrix();
+	 //PlaneWall
+	 glPushMatrix();
+	 glTranslated(7.5, 4, 0);
+	 glRotated(90.0, 1, 0, 0);
+	 glScaled(15, 0.2, 8);
+	 wall->draw();
+	 glPopMatrix();
 
-	// Board A
-	glPushMatrix();
-	glTranslated(4, 4, 0.2);
-	glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
-	glRotated(90.0, 1, 0, 0);
-	materialA->apply();
-	boardA->draw();
-	glPopMatrix();
+	 // Board A
+	 glPushMatrix();
+	 glTranslated(4, 4, 0.2);
+	 glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
+	 glRotated(90.0, 1, 0, 0);
+	 materialA->apply();
+	 boardA->draw();
+	 glPopMatrix();
 
-	//PlaneB
-	glPushMatrix();
-	glTranslated(10.5, 4, 0.2);
-	glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
-	glRotated(90.0, 1, 0, 0);
-	materialB->apply();
-	boardB->draw();
-	glPopMatrix();*/
+	 //PlaneB
+	 glPushMatrix();
+	 glTranslated(10.5, 4, 0.2);
+	 glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
+	 glRotated(90.0, 1, 0, 0);
+	 materialB->apply();
+	 boardB->draw();
+	 glPopMatrix();*/
 
-	myCylinder c(30,1);
-	c.draw();
+	myCylinder pol[8] = { myCylinder(3, 1), myCylinder(4, 1), myCylinder(5, 1),
+			myCylinder(6, 1), myCylinder(7, 1), myCylinder(8, 1), myCylinder(9,
+					1), myCylinder(10, 1) };
+	for (int i = 7; i >=0; i--) {
+		glPushMatrix();
+		glTranslated(i*2, 0, 0);
+		pol[i].draw();
+		glPopMatrix();
+	}
 
 	// ---- END Primitive drawing section
 
