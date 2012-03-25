@@ -7,6 +7,7 @@
 class myCylinder: public CGFobject {
 
 	int slices, stacks;
+	bool smooth;
 
 public:
 	myCylinder(int slices, int stacks, bool smooth=0);
