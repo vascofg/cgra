@@ -14,7 +14,7 @@ float deg2rad = pi / 180.0;
 #define BOARD_WIDTH 6.4
 
 // Positions for two lights
-float light0_pos[4] = { 4, 6.0, 1.0, 1.0 };
+float light0_pos[4] = { 4, 6.0, 5.0, 1.0 };
 float light1_pos[4] = { 10.5, 6.0, 1.0, 1.0 };
 
 float light2_pos[4] = { 10.5, 6.0, 5.0, 1.0 };
@@ -41,10 +41,11 @@ float shininessB = 120.f;
 
 float ambientNull[4] = { 0, 0, 0, 1 };
 float yellow[4] = { 1, 1, 0, 1 };
+float white[4] = { 1, 0, 0, 1 };
 
 void LightingScene::init() {
 	// Enables lighting computations
-	//glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHTING);
 
 	// Sets up some lighting parameters
 	// Computes lighting only using the front face normals and materials
@@ -57,9 +58,8 @@ void LightingScene::init() {
 
 	light0 = new CGFlight(GL_LIGHT0, light0_pos);
 	light0->setAmbient(ambientNull);
-	light0->setDiffuse(yellow);
-	light0->setSpecular(yellow);
-
+	light0->setDiffuse(white);
+	light0->setSpecular(white);
 	light0->enable();
 
 	light1 = new CGFlight(GL_LIGHT1, light1_pos);
@@ -119,87 +119,19 @@ void LightingScene::display() {
 
 	// Draw axis
 	axis.draw();
+	light0->draw();
 
-	/*
 
-	 light0->draw();
-	 light1->draw();
 	 // ---- END Background, camera and axis setup
 
 	 // ---- BEGIN Primitive drawing section
 
-	 //First Table
-	 glPushMatrix();
-	 glTranslated(5, 0, 8);
-	 table->draw();
-	 glPopMatrix();
 
-	 //Second Table
-	 glPushMatrix();
-	 glTranslated(12, 0, 8);
-	 table->draw();
-	 glPopMatrix();
-
-	 //Floor
-	 // Coefficients for material
-	 float amb[3] = {0, 0,  0.3984};
-	 float dif[3] = {0, 0,  0.3984};
-	 float spec[3] = {0, 0,  0.1};
-	 float shininess = 12.f;
-	 CGFappearance *materialF = new CGFappearance(amb, dif, spec, shininess);
-	 glPushMatrix();
-	 materialF->apply();
-	 glTranslated(7.5, 0, 7.5);
-	 glScaled(15, 0.2, 15);
-	 wall->draw();
-	 glPopMatrix();
-
-	 //LeftWall
-	 float amb1[3] = { 0.3984, 0, 0 };
-	 float dif1[3] = { 0.3984, 0, 0};
-	 float spec1[3] = { 0.20, 0, 0};
-	 float shininess1 = 12.f;
-	 CGFappearance *materialLw = new CGFappearance(amb1, dif1, spec1, shininess1);
-
-	 glPushMatrix();
-	 materialLw->apply();
-	 glTranslated(0, 4, 7.5);
-	 glRotated(-90.0, 0, 0, 1);
-
-	 glScaled(8, 0.2, 15);
-	 wall->draw();
-	 glPopMatrix();
-
-	 //PlaneWall
-	 glPushMatrix();
-	 glTranslated(7.5, 4, 0);
-	 glRotated(90.0, 1, 0, 0);
-	 glScaled(15, 0.2, 8);
-	 wall->draw();
-	 glPopMatrix();
-
-	 // Board A
-	 glPushMatrix();
-	 glTranslated(4, 4, 0.2);
-	 glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
-	 glRotated(90.0, 1, 0, 0);
-	 materialA->apply();
-	 boardA->draw();
-	 glPopMatrix();
-
-	 //PlaneB
-	 glPushMatrix();
-	 glTranslated(10.5, 4, 0.2);
-	 glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
-	 glRotated(90.0, 1, 0, 0);
-	 materialB->apply();
-	 boardB->draw();
-	 glPopMatrix();*/
-
-	myCylinder pol[8] = { myCylinder(3, 1), myCylinder(4, 1), myCylinder(5, 1),
+	// Draw 8 cilinders
+	myCylinder pol[] = { myCylinder(4, 4), myCylinder(4, 2), myCylinder(5, 1),
 			myCylinder(6, 1), myCylinder(7, 1), myCylinder(8, 1), myCylinder(9,
-					1), myCylinder(10, 1) };
-	for (int i = 7; i >=0; i--) {
+					1), myCylinder(10, 1), myCylinder(20, 1),myCylinder(50, 1),myCylinder(100, 4)};
+	for (int i = 10; i >=0; i--) {
 		glPushMatrix();
 		glTranslated(i*2, 0, 0);
 		pol[i].draw();
