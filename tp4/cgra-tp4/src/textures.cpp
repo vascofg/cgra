@@ -7,7 +7,7 @@ boardTex::boardTex() {
 	float difA[3] = {0.5, 0.5, 0.5};
 	float specA[3] = {0.2, 0.2, 0.2};
 	
-	this->setTexture("board.png");
+	this->setTexture("textures/board.png");
 	this->setAmbient(ambA);
 	this->setDiffuse(difA);
 	this->setSpecular(specA);
@@ -21,7 +21,7 @@ floorTex::floorTex() {
 	float difA[3] = {0.5, 0.5, 0.5};
 	float specA[3] = {0.2, 0.2, 0.2};
 
-	this->setTexture("floor.png");
+	this->setTexture("textures/floor.png");
 	this->setAmbient(ambA);
 	this->setDiffuse(difA);
 	this->setSpecular(specA);

@@ -1,7 +1,7 @@
 #ifndef TEXTURES_H
 #define TEXTURES_H
 
-#include "CGF/CGFappearance.h"
+#include "CGFappearance.h"
 
 // Board texture
 class boardTex : public CGFappearance {
