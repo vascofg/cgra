@@ -38,7 +38,11 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
+<<<<<<< HEAD
 	g++ -I"/home/andre/Dropbox/mieic/cgra/cgra-practical-classes/tp4/cgra-tp4/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+=======
+	g++ -I"/home/vascofg/git/cgra-practical-classes/tp4/cgra-tp4/include" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+>>>>>>> 3eeaf93f64eac8eb22090ed921cae6ef859ad632
 	@echo 'Finished building: $<'
 	@echo ' '
 

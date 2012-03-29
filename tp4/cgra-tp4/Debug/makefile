@@ -8,8 +8,13 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+<<<<<<< HEAD
 -include src/subdir.mk
 -include subdir.mk
+=======
+-include subdir.mk
+-include src/subdir.mk
+>>>>>>> 3eeaf93f64eac8eb22090ed921cae6ef859ad632
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -44,7 +49,11 @@ all: cgra-tp4
 cgra-tp4: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
+<<<<<<< HEAD
 	g++  -o "cgra-tp4" $(OBJS) $(USER_OBJS) $(LIBS)
+=======
+	g++  -o"cgra-tp4" $(OBJS) $(USER_OBJS) $(LIBS)
+>>>>>>> 3eeaf93f64eac8eb22090ed921cae6ef859ad632
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -5,4 +5,7 @@
 USER_OBJS :=
 
 LIBS := -lGL -lGLU -lglut -lglui -lCGF
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3eeaf93f64eac8eb22090ed921cae6ef859ad632
