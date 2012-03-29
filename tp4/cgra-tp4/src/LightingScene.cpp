@@ -28,18 +28,6 @@ float globalAmbientLight[4] = { 0, 0, 0, 0 };
 #define BOARD_A_DIVISIONS 30
 #define BOARD_B_DIVISIONS 100
 
-// Coefficients for material A
-float ambA[3] = { 0.2, 0.2, 0.2 };
-float difA[3] = { 0.6, 0.6, 0.6 };
-float specA[3] = { 0, 0.8, 0.8 };
-float shininessA = 120.f;
-
-// Coefficients for material B
-float ambB[3] = { 0.2, 0.2, 0.2 };
-float difB[3] = { 0.6, 0.6, 0.6 };
-float specB[3] = { 0.8, 0.8, 0.8 };
-float shininessB = 120.f;
-
 float ambientNull[4] = { 0, 0, 0, 1 };
 float ambient1[4] = { 0.05, 0.05, 0.05, 1 };
 float yellow[4] = { 1, 1, 0, 1 };
@@ -98,8 +86,8 @@ void LightingScene::init() {
 	boardB = new Plane(BOARD_B_DIVISIONS);
 
 	//Declares materials
-	materialA = new CGFappearance(ambA, difA, specA, shininessA);
-	materialB = new CGFappearance(ambB, difB, specB, shininessB);
+	slidesTexture = new slidesAppearance();
+	boardTexture = new boardAppearance();
 
 }
 
@@ -183,7 +171,7 @@ void LightingScene::display() {
 	glTranslated(4, 4, 0.2);
 	glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
 	glRotated(90.0, 1, 0, 0);
-	materialA->apply();
+	slidesTexture->apply();
 	boardA->draw();
 	glPopMatrix();
 
@@ -192,7 +180,7 @@ void LightingScene::display() {
 	glTranslated(10.5, 4, 0.2);
 	glScaled(BOARD_WIDTH, BOARD_HEIGHT, 1);
 	glRotated(90.0, 1, 0, 0);
-	materialB->apply();
+	boardTexture->apply();
 	boardB->draw();
 	glPopMatrix();
 
@@ -230,6 +218,6 @@ LightingScene::~LightingScene() {
 	delete (wall);
 	delete (boardA);
 	delete (boardB);
-	delete (materialA);
-	delete (materialB);
+	delete (slidesTexture);
+	delete (boardTexture);
 }

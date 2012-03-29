@@ -4,16 +4,22 @@
 #include "CGFappearance.h"
 
 // Board texture
-class boardTex : public CGFappearance {
+class tableAppearance : public CGFappearance {
 
 	public:
-	boardTex();
+	tableAppearance();
 };
 
-// Floor texture
-class floorTex : public CGFappearance{
-public:
-	floorTex();
+class slidesAppearance : public CGFappearance {
+
+	public:
+	slidesAppearance();
+};
+
+class boardAppearance : public CGFappearance {
+
+	public:
+	boardAppearance();
 };
 
 
