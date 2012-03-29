@@ -211,7 +211,7 @@ void LightingScene::display() {
 	// lamp in the roof
 	glRotated(180,1,0,0);
 	glTranslated(7.5, -8, -7.5);
-	myLamp *lamp = new myLamp(50, 1);
+	myLamp *lamp = new myLamp(20, 1);
 
 	lamp->draw();
 	// ---- END Primitive drawing section
