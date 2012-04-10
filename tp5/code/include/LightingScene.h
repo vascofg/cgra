@@ -7,6 +7,7 @@
 #include "Plane.h"
 #include "myMaterials.h"
 #include "myCylinder.h"
+#include "myClock.h"
 
 class LightingScene : public CGFscene
 {
@@ -32,6 +33,7 @@ protected:
 	Plane* boardA;
 	Plane* boardB;
 	myCylinder* column;
+        myClock* clock;
 	// -- materials
 	boardAppearance* boardMaterial;
 	slidesAppearance* slidesMaterial;

@@ -103,4 +103,19 @@ marbleAppearance::marbleAppearance(){
 
 }
 
+clockAppearance::clockAppearance(){
+
+	float amb[3] = { 0.6, 0.6, 0.6 };
+	float dif[3] = { 0.4, 0.4, 0.4 };
+	float spec[3] = { 0, 0,0 };
+	float shininess = 120.f;
+
+	this->setTexture("textures/clock.png");
+	this->setAmbient(amb);
+	this->setDiffuse(dif);
+	this->setSpecular(spec);
+	this->shininess = shininess;
+
+}
+
 

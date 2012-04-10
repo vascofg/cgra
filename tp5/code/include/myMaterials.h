@@ -52,6 +52,12 @@ class marbleAppearance : public CGFappearance{
 
 };
 
+// Material for the clock
+class clockAppearance : public CGFappearance{
+	public:
+	clockAppearance();
+
+};
 
 
 #endif
