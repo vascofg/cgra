@@ -58,7 +58,7 @@
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>${MAKE}</buildCommand>
           <cleanCommand>${MAKE}  clean</cleanCommand>
-          <executablePath></executablePath>
+          <executablePath>bin/cgra-tp5</executablePath>
           <ccTool>
             <incDir>
               <pElem>include/CGF</pElem>

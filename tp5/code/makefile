@@ -4,7 +4,7 @@ SRC = $(wildcard src/*.cpp)
 
 OBJ = $(patsubst src%, ../buildtemp%.o, $(SRC))
 
-OUT = bin/cgra-tp4
+OUT = bin/cgra-tp5
 
 # include directories
 INCLUDES = -I. -I./include/  -I./include/CGF -I/usr/local/include
