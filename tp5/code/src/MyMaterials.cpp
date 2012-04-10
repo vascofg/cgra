@@ -7,7 +7,7 @@ tableAppearance::tableAppearance(){
 	float spec[3] = { 0.05, 0.05, 0.05 };
 	float shininess = 2.f;
 	
-	this->setTexture("table.png");
+	this->setTexture("textures/table.png");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
@@ -22,7 +22,7 @@ slidesAppearance::slidesAppearance() {
 	float spec[3] = { 0.05, 0.05, 0.05 };
 	float shininess = 1.f;
 
-	this->setTexture("slides.png");
+	this->setTexture("textures/slides.png");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
@@ -36,7 +36,7 @@ boardAppearance::boardAppearance() {
 	float dif[3] = { 0.2, 0.2, 0.2 };
 	float spec[3] = { 0.4, 0.4, 0.4 };
 	float shininess = 1200.f;
-	this->setTexture("board.png");
+	this->setTexture("textures/board.png");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
@@ -51,7 +51,7 @@ floorAppearance::floorAppearance(){
 	float spec[3] = { 0.3, 0.3, 0.3 };
 	float shininess = 20.f;
 	
-	this->setTexture("floor.png");
+	this->setTexture("textures/floor.png");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
@@ -65,7 +65,7 @@ wallAppearance::wallAppearance() {
 	float spec[3] = { 0.05, 0.05, 0.05 };
 	float shininess = 1200.f;
 
-	this->setTexture("wall.png");
+	this->setTexture("textures/wall.png");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
@@ -80,7 +80,7 @@ windowAppearance::windowAppearance(){
 	float spec[3] = { 0.5, 0.5, 0.5 };
 	float shininess = 1200.f;
 
-	this->setTexture("window.png");
+	this->setTexture("textures/window.png");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
@@ -95,7 +95,7 @@ marbleAppearance::marbleAppearance(){
 	float spec[3] = { 0.9, 0.9,0.9 };
 	float shininess = 1200.f;
 
-	this->setTexture("marmore.jpg");
+	this->setTexture("textures/marmore.jpg");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);

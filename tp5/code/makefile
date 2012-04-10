@@ -2,7 +2,7 @@
 
 SRC = $(wildcard src/*.cpp)
 
-OBJ = $(patsubst src%, ../buildtemp%.o, $(SRC))
+OBJ = $(patsubst src%, obj%.o, $(SRC))
 
 OUT = bin/cgra-tp5
 
@@ -25,8 +25,8 @@ LDFLAGS = -g
 
 default: $(OUT)
 
-../buildtemp/%.o: src/%
-	mkdir -p ../buildtemp
+obj/%.o: src/%
+	mkdir -p obj
 	$(CCC) $(INCLUDES) $(CCFLAGS) -c $< -o $@
 
 $(OUT): $(OBJ)
@@ -35,8 +35,8 @@ $(OUT): $(OBJ)
 
 all: $(OUT)
 
-../buildtemp/%.o: src/%
-	mkdir -p ../buildtemp
+obj/%.o: src/%
+	mkdir -p obj
 	$(CCC) $(INCLUDES) $(CCFLAGS) -c $< -o $@
 
 $(OUT): $(OBJ)
@@ -45,6 +45,7 @@ $(OUT): $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(OUT)
+	rm -rf obj
 
 test:
 	echo $(SRC)
