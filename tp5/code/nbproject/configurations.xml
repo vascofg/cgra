@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="80">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df name="code" root=".">
+      <df name="bin">
+      </df>
+      <df name="include">
+        <df name="CGF">
+          <in>CGFappearance.h</in>
+          <in>CGFapplication.h</in>
+          <in>CGFaxis.h</in>
+          <in>CGFcamera.h</in>
+          <in>CGFinterface.h</in>
+          <in>CGFlight.h</in>
+          <in>CGFobject.h</in>
+          <in>CGFscene.h</in>
+        </df>
+        <in>LightingScene.h</in>
+        <in>Plane.h</in>
+        <in>myCylinder.h</in>
+        <in>myLamp.h</in>
+        <in>myMaterials.h</in>
+        <in>myTable.h</in>
+        <in>myUnitCube.h</in>
+      </df>
+      <df name="src">
+        <in>LightingScene.cpp</in>
+        <in>Lights.cpp</in>
+        <in>MyMaterials.cpp</in>
+        <in>Plane.cpp</in>
+        <in>main.cpp</in>
+        <in>myCylinder.cpp</in>
+        <in>myLamp.cpp</in>
+        <in>myTable.cpp</in>
+        <in>myUnitCube.cpp</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE}</buildCommand>
+          <cleanCommand>${MAKE}  clean</cleanCommand>
+          <executablePath></executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>include/CGF</pElem>
+              <pElem>.</pElem>
+              <pElem>include</pElem>
+              <pElem>/usr/local/include</pElem>
+            </incDir>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="include/CGF/CGFappearance.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFapplication.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFaxis.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFcamera.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFinterface.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFlight.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFobject.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/CGF/CGFscene.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/LightingScene.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/Plane.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/myCylinder.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/myLamp.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/myMaterials.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/myTable.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/myUnitCube.h" ex="true" tool="3" flavor="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
