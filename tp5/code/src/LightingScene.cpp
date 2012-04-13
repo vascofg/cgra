@@ -75,9 +75,7 @@ void LightingScene::display() {
 
     // Clock
     glPushMatrix();
-        glTranslated(7.5, 7, 0);
-        glRotated(90, 1, 0, 0);
-        glScaled(1, 0.1, 1);
+        glTranslated(7.5, 7, 0.3);
         clock->draw();
     glPopMatrix();
 

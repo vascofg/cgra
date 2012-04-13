@@ -6,7 +6,13 @@ myClock::myClock(){
 }
 
 void myClock::draw(){
+    // Clock appearance
     clockAppearance *clockMaterial=new clockAppearance();
     clockMaterial->apply();
-    c->draw();
+    glEnable (GL_TEXTURE_2D);
+    
+    // New GLU quadric
+    GLUquadric *clock = gluNewQuadric();
+    gluQuadricTexture (clock, GL_TRUE);
+    gluDisk(clock, 0, 1, 12, 1);
 }

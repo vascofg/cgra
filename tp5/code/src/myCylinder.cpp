@@ -39,9 +39,9 @@ void myCylinder::draw() {
 			// Top triangle
 			glNormal3f(0, 1, 0); // need to define normal to y
 			glBegin(GL_TRIANGLES);
-				glTexCoord2f(0,0); glVertex3d(baseWidth / 2, 1, 0);
-				glTexCoord2f(0.2,0.3); glVertex3d(-baseWidth / 2, 1, 0);
-				glTexCoord2f(0,0.3); glVertex3d(0, 1, 1);
+				glTexCoord2f(0,360/(float)slices); glVertex3d(baseWidth / 2, 1, 0);
+				glTexCoord2f(0.5,0.5); glVertex3d(-baseWidth / 2, 1, 0);
+				glTexCoord2f(360/(float)slices,360/(float)slices); glVertex3d(0, 1, 1);
 			glEnd();
 
 			// Bottom triangle

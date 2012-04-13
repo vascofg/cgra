@@ -17,11 +17,16 @@
         </df>
         <in>LightingScene.h</in>
         <in>Plane.h</in>
+        <in>myClock.h</in>
         <in>myCylinder.h</in>
         <in>myLamp.h</in>
         <in>myMaterials.h</in>
         <in>myTable.h</in>
         <in>myUnitCube.h</in>
+      </df>
+      <df name="lib">
+      </df>
+      <df name="obj">
       </df>
       <df name="src">
         <in>LightingScene.cpp</in>
@@ -29,10 +34,13 @@
         <in>MyMaterials.cpp</in>
         <in>Plane.cpp</in>
         <in>main.cpp</in>
+        <in>myClock.cpp</in>
         <in>myCylinder.cpp</in>
         <in>myLamp.cpp</in>
         <in>myTable.cpp</in>
         <in>myUnitCube.cpp</in>
+      </df>
+      <df name="textures">
       </df>
     </df>
     <logicalFolder name="ExternalFiles"
