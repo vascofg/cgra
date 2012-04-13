@@ -25,14 +25,21 @@ class CGFscene {
 
 		virtual void init();
 		virtual void display();
+		virtual void update(long millis);
 
 		CGFcamera* activeCamera;
 		
 		void activateCamera(int i);
 
 		CGFaxis axis;
+		void checkUpdate();
 
 	protected:
+		void setUpdatePeriod(long millis);
+
+		long updatePeriod;
+		long lastUpdate;
+
 		std::list<CGFlight*> scene_lights;
 		std::list<CGFobject*> scene_objects;
 		std::vector<CGFcamera*> scene_cameras;

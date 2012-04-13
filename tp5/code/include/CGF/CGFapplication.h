@@ -47,6 +47,8 @@ class CGFapplication {
 		static int width;
 		static int height;
 
+		static long getTime();
+
 	protected:
 		void activate();
 
@@ -61,6 +63,7 @@ class CGFapplication {
 		void static reshape(int, int);
 		void static display();
 		void environmentInit();
+		void updateScene(); 
 };
 
 #endif

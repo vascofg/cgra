@@ -8,6 +8,7 @@
 #include "myMaterials.h"
 #include "myCylinder.h"
 #include "myClock.h"
+#include "MyClockHand.h"
 
 class LightingScene : public CGFscene
 {
@@ -18,6 +19,8 @@ public:
 	void initLights();
 	// Draw the primitives, apply the materials, etc
 	void display();
+        // update
+        void update(long millis);
 	// free memory
 	~LightingScene();
 protected:

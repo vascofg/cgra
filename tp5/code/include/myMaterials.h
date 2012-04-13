@@ -59,5 +59,11 @@ class clockAppearance : public CGFappearance{
 
 };
 
+// Material for the pointer
+class pointerAppearance: public CGFappearance{
+public:
+    public:
+    pointerAppearance();
+};
 
 #endif

@@ -47,6 +47,9 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
+    
+    // set update rate
+    setUpdatePeriod(100);
 
 }
 
@@ -64,15 +67,17 @@ void LightingScene::display() {
 
     // Apply transformations corresponding to the camera position relative to the origin
     CGFscene::activeCamera->applyView();
+    
     // Draw axis
     axis.draw();
     light0->draw();
     lightBoardA->draw();
     lightBoardB->draw();
+    
     // ---- END Background, camera and axis setup
 
     // ---- BEGIN Primitive drawing section
-
+   
     // Clock
     glPushMatrix();
         glTranslated(7.5, 7, 0.3);
@@ -149,7 +154,7 @@ void LightingScene::display() {
     column->draw();
     glTranslated(25, 0, 0);
     column->draw();
-    glPopMatrix();
+    glPopMatrix(); 
     // ---- END Primitive drawing section
 
 
@@ -157,6 +162,13 @@ void LightingScene::display() {
     // while the graphics card is showing the contents of another buffer - the front buffer
     // glutSwapBuffers() will swap pointers so that the back buffer becomes the front buffer and vice-versa
     glutSwapBuffers();
+}
+
+void LightingScene::update(long millis){
+    /*glPushMatrix();
+    glTranslated(7.5, 7, 0.3);
+    clock->update(millis);
+    glPopMatrix();*/
 }
 
 LightingScene::~LightingScene() {

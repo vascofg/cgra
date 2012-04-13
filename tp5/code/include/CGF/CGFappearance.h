@@ -28,6 +28,7 @@ class CGFappearance {
 		void setAmbient(float*);
 		void setDiffuse(float*);
 		void setSpecular(float*);
+		void setShininess(float);
 
 		void setTexture(string);
 		void setTextureWrap(int, int);

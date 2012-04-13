@@ -117,5 +117,8 @@ clockAppearance::clockAppearance(){
 	this->shininess = shininess;
 
 }
-
-
+pointerAppearance::pointerAppearance(){
+    this->color[0]=1;
+    this->color[1]=0;
+    this->color[2]=0;
+}

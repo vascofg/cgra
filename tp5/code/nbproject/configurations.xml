@@ -16,6 +16,7 @@
           <in>CGFscene.h</in>
         </df>
         <in>LightingScene.h</in>
+        <in>MyClockHand.h</in>
         <in>Plane.h</in>
         <in>myClock.h</in>
         <in>myCylinder.h</in>
@@ -31,6 +32,7 @@
       <df name="src">
         <in>LightingScene.cpp</in>
         <in>Lights.cpp</in>
+        <in>MyClockHand.cpp</in>
         <in>MyMaterials.cpp</in>
         <in>Plane.cpp</in>
         <in>main.cpp</in>
