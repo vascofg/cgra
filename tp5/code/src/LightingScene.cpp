@@ -47,10 +47,10 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
-    
+         
     // set update rate
     setUpdatePeriod(100);
-
+    timeSet=false;
 }
 
 void LightingScene::display() {
@@ -76,12 +76,23 @@ void LightingScene::display() {
     
     // ---- END Background, camera and axis setup
 
+    // ---- BEGIN update time section
+    
+      if(timeSet==false){
+        time(&start);
+        timeSet=true;
+    }
+    time(&end);
+    timeElapsed=difftime(end,start)*1000.0;
+    
+    // ---- END update time section
+    
     // ---- BEGIN Primitive drawing section
-   
+    
     // Clock
     glPushMatrix();
         glTranslated(7.5, 7, 0.3);
-        clock->draw();
+        clock->update(timeElapsed);
     glPopMatrix();
 
     //Left Table
@@ -168,7 +179,9 @@ void LightingScene::update(long millis){
     /*glPushMatrix();
     glTranslated(7.5, 7, 0.3);
     clock->update(millis);
-    glPopMatrix();*/
+    glPopMatrix(); */
+    /* This function doesn't really works because if you  put a primitive here, doesn't draw it! */
+    clock->draw();
 }
 
 LightingScene::~LightingScene() {

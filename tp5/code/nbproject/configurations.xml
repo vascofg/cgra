@@ -14,6 +14,9 @@
           <in>CGFlight.h</in>
           <in>CGFobject.h</in>
           <in>CGFscene.h</in>
+          <in>imagetools.h</in>
+          <in>stb_image_write.h</in>
+          <in>version.h</in>
         </df>
         <in>LightingScene.h</in>
         <in>MyClockHand.h</in>

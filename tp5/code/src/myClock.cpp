@@ -64,7 +64,7 @@ void myClock::draw(){
      
      // Calculate seconds and angle
      float hoursT=minutesT/60.0;
-     float hoursAngle=hoursT/60.0*360;
+     float hoursAngle=hoursT/12.0*360;
      
      // Clock appearance
     clockAppearance *clockMaterial=new clockAppearance();
@@ -83,14 +83,14 @@ void myClock::draw(){
     glPushMatrix();
             glScaled(0.7,1,1);
             seconds->setScale(0.4,1,1);
-            seconds->setAngle(secondsAngle);
+            seconds->setAngle(180+90+secondsAngle);
             seconds->draw();
     glPopMatrix();
 
     // minutes pointer
     glPushMatrix();
             glScaled(0.7,1,1);
-            minutes->setAngle(minutesAngle);
+            minutes->setAngle(180+minutesAngle);
             minutes->draw();
     glPopMatrix();
 
@@ -98,7 +98,7 @@ void myClock::draw(){
     glPushMatrix();
             glScaled(0.7,1,1);
             hours->setScale(1,0.85,1);
-            hours->setAngle(hoursAngle);
+            hours->setAngle(90+hoursAngle);
             hours->draw();
     glPopMatrix();
      

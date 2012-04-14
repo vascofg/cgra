@@ -9,6 +9,7 @@
 #include "myCylinder.h"
 #include "myClock.h"
 #include "MyClockHand.h"
+#include <time.h>
 
 class LightingScene : public CGFscene
 {
@@ -44,6 +45,10 @@ protected:
 	wallAppearance* wallMaterial;
 	windowAppearance* windowMaterial;
 	marbleAppearance* marbleMaterial;
+        // -- time
+        time_t start,end;
+        bool timeSet;
+        float timeElapsed;
 };
 
 #endif
