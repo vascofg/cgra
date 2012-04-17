@@ -12,6 +12,9 @@ class myClock : public CGFobject {
     MyClockHand *seconds;
     MyClockHand *minutes;
     MyClockHand *hours;
+    float angleSeconds;
+    float angleMinutes;
+    float angleHours;
 public:
     myClock();
     void draw();

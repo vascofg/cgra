@@ -8,6 +8,9 @@ myClock::myClock(){
     seconds= new MyClockHand;
     minutes= new MyClockHand;
     hours= new MyClockHand;
+    angleSeconds=0;
+    angleMinutes=0;
+    angleHours=0;
     
 }
 
@@ -29,14 +32,14 @@ void myClock::draw(){
     glPushMatrix();
             glScaled(0.7,1,1);
             seconds->setScale(0.4,1,1);
-            seconds->setAngle(180+90);
+            seconds->setAngle(180+90+angleSeconds);
             seconds->draw();
     glPopMatrix();
 
     // minutes pointer
     glPushMatrix();
             glScaled(0.7,1,1);
-            minutes->setAngle(180);
+            minutes->setAngle(180+angleMinutes);
             minutes->draw();
     glPopMatrix();
 
@@ -44,7 +47,7 @@ void myClock::draw(){
     glPushMatrix();
             glScaled(0.7,1,1);
             hours->setScale(1,0.85,1);
-            hours->setAngle(90);
+            hours->setAngle(90+angleHours);
             hours->draw();
     glPopMatrix();
 
@@ -66,40 +69,9 @@ void myClock::draw(){
      float hoursT=minutesT/60.0;
      float hoursAngle=hoursT/12.0*360;
      
-     // Clock appearance
-    clockAppearance *clockMaterial=new clockAppearance();
-    clockMaterial->apply();
-    glEnable (GL_TEXTURE_2D);
-    
-    // New GLU quadric
-    GLUquadric *clock = gluNewQuadric();
-    gluQuadricTexture (clock, GL_TRUE);
-    gluDisk(clock, 0, 1, 12, 1);
-    
-    // Translate pointers 0.1 in z
-    glTranslated(0,0,0.1);
-    
-    // seconds pointer
-    glPushMatrix();
-            glScaled(0.7,1,1);
-            seconds->setScale(0.4,1,1);
-            seconds->setAngle(180+90+secondsAngle);
-            seconds->draw();
-    glPopMatrix();
-
-    // minutes pointer
-    glPushMatrix();
-            glScaled(0.7,1,1);
-            minutes->setAngle(180+minutesAngle);
-            minutes->draw();
-    glPopMatrix();
-
-    // hours pointer
-    glPushMatrix();
-            glScaled(0.7,1,1);
-            hours->setScale(1,0.85,1);
-            hours->setAngle(90+hoursAngle);
-            hours->draw();
-    glPopMatrix();
+     // Update the values
+     this->angleHours=hoursAngle;
+     this->angleMinutes=minutesAngle;
+     this->angleSeconds=secondsAngle;
      
  }

@@ -76,23 +76,12 @@ void LightingScene::display() {
     
     // ---- END Background, camera and axis setup
 
-    // ---- BEGIN update time section
-    
-      if(timeSet==false){
-        time(&start);
-        timeSet=true;
-    }
-    time(&end);
-    timeElapsed=difftime(end,start)*1000.0;
-    
-    // ---- END update time section
-    
     // ---- BEGIN Primitive drawing section
     
     // Clock
     glPushMatrix();
         glTranslated(7.5, 7, 0.3);
-        clock->update(timeElapsed);
+        clock->draw();
     glPopMatrix();
 
     //Left Table
@@ -176,12 +165,7 @@ void LightingScene::display() {
 }
 
 void LightingScene::update(long millis){
-    /*glPushMatrix();
-    glTranslated(7.5, 7, 0.3);
-    clock->update(millis);
-    glPopMatrix(); */
-    /* This function doesn't really works because if you  put a primitive here, doesn't draw it! */
-    clock->draw();
+        clock->update(millis);
 }
 
 LightingScene::~LightingScene() {
