@@ -9,6 +9,7 @@
 #include "myCylinder.h"
 #include "myClock.h"
 #include "MyClockHand.h"
+#include "MyPaperPlane.h"
 #include <time.h>
 
 class LightingScene : public CGFscene
@@ -38,6 +39,7 @@ protected:
 	Plane* boardB;
 	myCylinder* column;
         myClock* clock;
+        MyPaperPlane *plane;
 	// -- materials
 	boardAppearance* boardMaterial;
 	slidesAppearance* slidesMaterial;

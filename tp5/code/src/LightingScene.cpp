@@ -2,9 +2,10 @@
 #include "CGFaxis.h"
 #include "CGFapplication.h"
 #include "myUnitCube.h"
+#include "MyPaperPlane.h"
 #include <math.h>
 
-// Global ambient light (do not confuse with ambient component of individual lights)
+// Global ambient light MyPaperPlane(do not confuse with ambient component of individual lights)
 float globalAmbientLight[4] = {0, 0, 0, 1.0};
 
 // Constants for materials
@@ -39,6 +40,7 @@ void LightingScene::init() {
     boardB = new Plane(BOARD_B_DIVISIONS);
     column = new myCylinder(14, 8, 1);
     clock = new myClock();
+    plane = new MyPaperPlane();
 
     // Declare Materials
     boardMaterial = new boardAppearance();
@@ -82,6 +84,11 @@ void LightingScene::display() {
     glPushMatrix();
         glTranslated(7.5, 7, 0.3);
         clock->draw();
+    glPopMatrix();
+    
+    // Draw paper plane
+      glPushMatrix();
+        plane->draw();
     glPopMatrix();
 
     //Left Table
@@ -166,6 +173,7 @@ void LightingScene::display() {
 
 void LightingScene::update(long millis){
         clock->update(millis);
+        plane->update(millis);
 }
 
 LightingScene::~LightingScene() {
