@@ -56,7 +56,7 @@ void myClock::draw(){
     
 }
  void myClock::update(long milis){
-     cout << " DEBUG MODE: UPDATE: " <<milis << endl;
+     //cout << " DEBUG MODE: UPDATE: " <<milis << endl;
      // Calculate seconds and angle
      float secondsT=milis/1000.0;
      float secondsAngle=secondsT/60.0*360;
