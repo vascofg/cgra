@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="80">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df name="cgra-tp6" root=".">
+      <df name="bin">
+        <in>cgra-tp6</in>
+      </df>
+      <df name="include">
+        <df name="CGF">
+          <in>CGFappearance.h</in>
+          <in>CGFapplication.h</in>
+          <in>CGFaxis.h</in>
+          <in>CGFcamera.h</in>
+          <in>CGFinterface.h</in>
+          <in>CGFlight.h</in>
+          <in>CGFobject.h</in>
+          <in>CGFscene.h</in>
+        </df>
+        <in>LightingScene.h</in>
+        <in>MyClockHand.h</in>
+        <in>Plane.h</in>
+        <in>TPinterface.h</in>
+        <in>myClock.h</in>
+        <in>myCylinder.h</in>
+        <in>myLamp.h</in>
+        <in>myMaterials.h</in>
+        <in>myRobot.h</in>
+        <in>myTable.h</in>
+        <in>myUnitCube.h</in>
+      </df>
+      <df name="lib">
+      </df>
+      <df name="obj">
+      </df>
+      <df name="src">
+        <in>LightingScene.cpp</in>
+        <in>Lights.cpp</in>
+        <in>MyClockHand.cpp</in>
+        <in>MyMaterials.cpp</in>
+        <in>Plane.cpp</in>
+        <in>TPinterface.cpp</in>
+        <in>main.cpp</in>
+        <in>myClock.cpp</in>
+        <in>myCylinder.cpp</in>
+        <in>myLamp.cpp</in>
+        <in>myRobot.cpp</in>
+        <in>myTable.cpp</in>
+        <in>myUnitCube.cpp</in>
+      </df>
+      <df name="textures">
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f makefile</buildCommand>
+          <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
+          <executablePath>bin/cgra-tp6</executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>include/CGF</pElem>
+              <pElem>.</pElem>
+              <pElem>include</pElem>
+              <pElem>/usr/local/include</pElem>
+            </incDir>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="include/myLamp.h" ex="true" tool="3" flavor="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
