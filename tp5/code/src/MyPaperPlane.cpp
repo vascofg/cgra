@@ -55,7 +55,7 @@ void MyPaperPlane::update(long milis) {
 
     // initial positions
     float z0 = 7;
-    float y0 = 4;
+    float y0 = 6;
     float x0 = 10;
 
     // lifts
