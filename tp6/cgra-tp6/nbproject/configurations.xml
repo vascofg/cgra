@@ -3,7 +3,6 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df name="cgra-tp6" root=".">
       <df name="bin">
-        <in>cgra-tp6</in>
       </df>
       <df name="include">
         <df name="CGF">

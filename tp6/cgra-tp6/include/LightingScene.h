@@ -26,7 +26,7 @@ public:
 	// free memory
 	~LightingScene();
         void toggleSomething();
-	int sceneVar;
+        int light0on, lightBoardAon, lightBoardBon, clockon;
         //Robot variables
         void moveRobot(double rotAngle, double moveDist);
 protected:

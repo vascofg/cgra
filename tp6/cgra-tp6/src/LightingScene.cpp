@@ -49,10 +49,13 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
-         
+
     // set update rate
     setUpdatePeriod(100);
-    timeSet=false;
+    timeSet = false;
+    
+    clockon=1;
+    
 }
 
 void LightingScene::display() {
@@ -69,27 +72,39 @@ void LightingScene::display() {
 
     // Apply transformations corresponding to the camera position relative to the origin
     CGFscene::activeCamera->applyView();
-    
+
     // Draw axis
-    axis.draw();
+    //axis.draw();
+    if (light0on)
+        light0->enable();
+    else
+        light0->disable();
+    if (lightBoardAon)
+        lightBoardA->enable();
+    else
+        lightBoardA->disable();
+    if (lightBoardBon)
+        lightBoardB->enable();
+    else
+        lightBoardB->disable();
     light0->draw();
     lightBoardA->draw();
     lightBoardB->draw();
-    
+
     // ---- END Background, camera and axis setup
 
     // ---- BEGIN Primitive drawing section
-    
+
     // Robot
     glPushMatrix();
-        glTranslated(7.5, 5, 7.5);
-        robot->draw();
+    glTranslated(7.5, 5, 7.5);
+    robot->draw();
     glPopMatrix();
-    
+
     // Clock
     glPushMatrix();
-        glTranslated(7.5, 7, 0.3);
-        clock->draw();
+    glTranslated(7.5, 7, 0.3);
+    clock->draw();
     glPopMatrix();
 
     //Left Table
@@ -156,8 +171,8 @@ void LightingScene::display() {
     column->draw();
     glTranslated(25, 0, 0);
     column->draw();
-    glPopMatrix(); 
-    
+    glPopMatrix();
+
     // ---- END Primitive drawing section
 
 
@@ -167,7 +182,8 @@ void LightingScene::display() {
     glutSwapBuffers();
 }
 
-void LightingScene::update(long millis){
+void LightingScene::update(long millis) {
+    if(clockon)
         clock->update(millis);
 }
 
@@ -176,10 +192,10 @@ LightingScene::~LightingScene() {
 }
 
 void LightingScene::toggleSomething() {
-    
+
 }
 
 void LightingScene::moveRobot(double rotAngle, double moveDist) {
-    robot->rotAngle+=rotAngle;
-    robot->moveDist+=moveDist;
+    robot->rotAngle += rotAngle;
+    robot->moveDist += moveDist;
 }
