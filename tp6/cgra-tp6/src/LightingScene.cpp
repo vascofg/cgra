@@ -41,7 +41,7 @@ void LightingScene::init() {
     boardB = new Plane(BOARD_B_DIVISIONS);
     column = new myCylinder(14, 8, 1);
     clock = new myClock();
-    robot = new myRobot();
+    robot = new myRobot(10);
 
     // Declare Materials
     boardMaterial = new boardAppearance();
