@@ -13,6 +13,7 @@ float globalAmbientLight[4] = {0, 0, 0, 1.0};
 #define BOARD_WIDTH 6.4
 #define BOARD_A_DIVISIONS 30
 #define BOARD_B_DIVISIONS 100
+#define PI 3.14159265
 
 void LightingScene::init() {
     // Enables lighting computations
@@ -197,5 +198,14 @@ void LightingScene::toggleSomething() {
 
 void LightingScene::moveRobot(double rotAngle, double moveDist) {
     robot->rotAngle += rotAngle;
-    robot->moveDist += moveDist;
+    if(moveDist==1)
+    {
+        robot->moveX += sin(robot->rotAngle*PI/180);
+        robot->moveZ += cos(robot->rotAngle*PI/180);
+    }
+    if(moveDist==-1)
+    {
+        robot->moveX -= sin(robot->rotAngle*PI/180);
+        robot->moveZ -= cos(robot->rotAngle*PI/180);
+    }
 }

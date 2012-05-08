@@ -9,7 +9,7 @@ class myRobot : public CGFobject {
     
 public:
     double rotAngle;
-    int moveDist;
+    float moveX, moveZ;
     myRobot();
     void draw();
     void update(long milis);

@@ -27,10 +27,6 @@
         <in>myTable.h</in>
         <in>myUnitCube.h</in>
       </df>
-      <df name="lib">
-      </df>
-      <df name="obj">
-      </df>
       <df name="src">
         <in>LightingScene.cpp</in>
         <in>Lights.cpp</in>

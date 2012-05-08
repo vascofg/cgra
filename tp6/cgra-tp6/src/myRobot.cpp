@@ -5,13 +5,12 @@ using namespace std;
 
 myRobot::myRobot() {
     rotAngle = -157.5;
-    moveDist = 0;
 }
 
 void myRobot::draw() {
     //DRAW THE TRIANGLE
     glPushMatrix();
-        glTranslated(0, 0, moveDist);
+        glTranslated(moveX, 0, moveZ);
         glRotated(rotAngle, 0, 1, 0);
         glBegin(GL_TRIANGLES);
         glVertex3d(0.5, 0.3, 0);
