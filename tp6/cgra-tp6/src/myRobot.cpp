@@ -1,6 +1,7 @@
 #include "myRobot.h"
 #include "myMaterials.h"
 #include <iostream>
+#include <myVertex.h>
 using namespace std;
 
 myRobot::myRobot(int stacks) {
@@ -27,7 +28,7 @@ void myRobot::draw() {
 	glPushMatrix();
 	// ->
 
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < 12; i++) {
 		glPushMatrix();
 		glNormal3f(1, 0, 0); // need to define normal to x
 		glRotated((i-2) * baseAngle, 0, 1, 0);
@@ -61,27 +62,33 @@ void myRobot::draw() {
 		glPopMatrix();
 		*/
 
+		// Compute the first triangle points
+		double zl=0.25*cos(baseAngleR*3/2.0);
+		double zr=0.25*cos(baseAngleR*1/2.0);
+		double xl=0.25*sin(baseAngleR*3/2.0);
+		double xr=0.25*sin(baseAngleR*1/2.0);
+
 
 		// side rectangles
 		for( int j=0; j<stacks; j++){
 				glPushMatrix();
 					glTranslated(0, j, 0);
 					// Rotate and copy the 3 faces
-					for(int l=0; l<1; l++){
+					for(int l=0; l<4; l++){
 						glPushMatrix();
 						glRotated(90*l,0,1,0);
-						for (int i = 0; i < 3; i++) {
+						for (int i = 0; i < 1; i++) {
+							myVertex triangleLeft(xl,1,zl);
+							triangleLeft.rotateY(baseAngleR*i);
+							myVertex triangleRight(xr,1,zr);
+							triangleRight.rotateY(baseAngleR*i);
 							   // Draw one face
 								glNormal3f(0,1,0);
 								glBegin(GL_QUADS);
 									// Computing the connections on top
-									double zl=0.25*cos(baseAngleR*3/2.0);
-									double zr=0.25*cos(baseAngleR*1/2.0);
-									double xl=0.25*sin(baseAngleR*3/2.0);
-									double xr=0.25*sin(baseAngleR*1/2.0);
 									glVertex3d(0.5-1/3.0*i , 0 ,0.5);
-									glVertex3d(xl, 1 ,zl);
-									glVertex3d(xr, 1,zr);
+									glVertex3d(triangleLeft.x, 1 ,triangleLeft.z);
+									glVertex3d(triangleRight.x, 1 ,triangleRight.z);
 									glVertex3d((0.5-1/3.0)-1/3.0*i, 0,0.5);
 								glEnd();
 
