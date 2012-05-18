@@ -15,8 +15,9 @@ void myRobot::draw() {
 	int slices=12;
 	double baseAngle = (360 / (float)slices);
 	double baseAngleR = (2 * acos(-1) / (float)slices);
-	double baseWidth = sin(2 * acos(-1) *0.25/ (float)slices);
+	double baseWidth = sin(2 * acos(-1) *0.25/ (float)slices); // 0.25 is the radius
 	double apothem = (tan(baseAngleR / 2));
+	double heightTop=1;
 
 	// (1) The robot translations and rotations
 	glTranslated(moveX, 0, moveZ);
@@ -26,6 +27,23 @@ void myRobot::draw() {
 	glPushMatrix();
 	// ->
 
+	for (int i = 0; i < 1; i++) {
+		glPushMatrix();
+		glNormal3f(1, 0, 0); // need to define normal to x
+		glRotated((i-2) * baseAngle, 0, 1, 0);
+		glTranslated((baseWidth / 2) / apothem, 0, 0);
+		glRotated(-90, 0, 1, 0);
+		// Top triangle
+					glNormal3f(0, 1, 0); // need to define normal to y
+					glBegin(GL_TRIANGLES);
+						glTexCoord2f(0,360/(float)slices); glVertex3d(baseWidth / 2, 1, 0);
+						glTexCoord2f(0.5,0.5); glVertex3d(-baseWidth / 2, 1, 0);
+						glTexCoord2f(360/(float)slices,360/(float)slices); glVertex3d(0, 1, 0.25);
+					glEnd();
+		glPopMatrix();
+	}
+
+
 		// square
 		glBegin(GL_QUADS);
 			glVertex3d(-0.5, 0, -0.5);
@@ -34,40 +52,42 @@ void myRobot::draw() {
 			glVertex3d(0.5, 0, -0.5);
 		glEnd();
 
-		/* circle*/
+		/* circle
 		glPushMatrix();
 			glRotated(180 / 12, 0, 1, 0);
 			glRotated(-90, 1, 0, 0);
 			glTranslated(0, 0, 1);
 			gluDisk(quadric, 0, 0.25, 12, 1);
 		glPopMatrix();
+		*/
 
 
 		// side rectangles
 		for( int j=0; j<stacks; j++){
 				glPushMatrix();
-				glTranslated(0, j, 0);
-				for (int i = 0; i < 1; i++) {
-					glPushMatrix();
+					glTranslated(0, j, 0);
+					// Rotate and copy the 3 faces
+					for(int l=0; l<1; l++){
+						glPushMatrix();
+						glRotated(90*l,0,1,0);
+						for (int i = 0; i < 3; i++) {
+							   // Draw one face
+								glNormal3f(0,1,0);
+								glBegin(GL_QUADS);
+									// Computing the connections on top
+									double zl=0.25*cos(baseAngleR*3/2.0);
+									double zr=0.25*cos(baseAngleR*1/2.0);
+									double xl=0.25*sin(baseAngleR*3/2.0);
+									double xr=0.25*sin(baseAngleR*1/2.0);
+									glVertex3d(0.5-1/3.0*i , 0 ,0.5);
+									glVertex3d(xl, 1 ,zl);
+									glVertex3d(xr, 1,zr);
+									glVertex3d((0.5-1/3.0)-1/3.0*i, 0,0.5);
+								glEnd();
 
-					// Face rectangle
-
-					glNormal3f(1, 0, 0); // need to define normal to x
-					glRotated((i+3) * baseAngle, 0, 1, 0); // i-1 to align with the square
-					glTranslated((baseWidth / 2) / apothem, 0, 0);
-					glRotated(-90, 0, 1, 0);
-
-					//glRectd(baseWidth / 2, 0, -baseWidth / 2, 1);
-					glBegin(GL_QUADS);
-						glTexCoord2f(0,0.3); glVertex3d(-0.5+1/3.0, 0,0);
-						glTexCoord2f(0.2,0.3); glVertex3d(-baseWidth / 2, 1,0);
-						glTexCoord2f(0.2,0); glVertex3d(baseWidth / 2, 1,0);
-						glTexCoord2f(0,0.1); glVertex3d(-0.5+2/3.0, 0,0);
-					glEnd();
-
-
-					glPopMatrix();
-				}
+						}
+						glPopMatrix();
+					}
 				glPopMatrix();
 			}
 	// ->
