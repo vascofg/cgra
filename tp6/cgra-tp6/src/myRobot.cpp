@@ -79,14 +79,28 @@ void myRobot::draw() {
 							triangleLeft.rotateY(-baseAngleR*i);
 							myVertex triangleRight(xr,1,zr);
 							triangleRight.rotateY(-baseAngleR*i);
-							// Compute the normal
-							myVertex normal(0,0,1);
-							normal.rotateY(baseAngleR);
-							glNormal3f(normal.x,normal.y,normal.z);
+
 							// Draw a rectangle from the square to the triangle joint
 							// Compute a semi rect from the square to triangle
-							mySemiRect left(new myVertex(0.5-1/3.0*i,0,0.5),new myVertex(triangleLeft.x, 1 ,triangleLeft.z),stacks);
-							mySemiRect right(new myVertex((0.5-1/3.0)-1/3.0*i, 0,0.5),new myVertex(triangleRight.x, 1 ,triangleRight.z),stacks);
+							myVertex *v1,*v2,*v3,*v4;
+							v1=new myVertex(0.5-1/3.0*i,0,0.5);
+							v2=new myVertex(triangleLeft.x, 1 ,triangleLeft.z);
+							v3=new myVertex((0.5-1/3.0)-1/3.0*i, 0,0.5);
+							v4=new myVertex(triangleRight.x, 1 ,triangleRight.z);
+							mySemiRect left(v1,v2,stacks);
+							mySemiRect right(v3,v4,stacks);
+
+							// Compute the normal
+
+
+							vector <myVertex> polVertexs;
+							polVertexs.push_back(*v1);
+							polVertexs.push_back(*v2);
+							polVertexs.push_back(*v3);
+							polVertexs.push_back(*v4);
+							myVertex normal=computeNormalNewel(polVertexs);
+							glNormal3f(normal.x,normal.y,normal.z);
+
 
 							glBegin(GL_QUADS);
 							    glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
