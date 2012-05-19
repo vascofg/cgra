@@ -51,6 +51,7 @@ protected:
 	wallAppearance* wallMaterial;
 	windowAppearance* windowMaterial;
 	marbleAppearance* marbleMaterial;
+	robotAppearance* robotMaterial;
         // -- time
         time_t start,end;
         bool timeSet;

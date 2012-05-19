@@ -50,6 +50,7 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
+    robotMaterial= new robotAppearance();
 
     // set update rate
     setUpdatePeriod(100);
@@ -98,8 +99,9 @@ void LightingScene::display() {
 
     // Robot
     glPushMatrix();
-    glTranslated(7.5, 5, 7.5);
-    robot->draw();
+    	glTranslated(7.5, 5, 7.5);
+    	robotMaterial->apply();
+    	robot->draw();
     glPopMatrix();
 
     // Clock

@@ -101,12 +101,12 @@ void myRobot::draw() {
 							myVertex normal=computeNormalNewel(polVertexs);
 							glNormal3f(normal.x,normal.y,normal.z);
 
-
+							// Reactangle draw
 							glBegin(GL_QUADS);
-							    glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
-								glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
-								glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
-								glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
+								glTexCoord2f(0,0.3); glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
+								glTexCoord2f(0,0.3); glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
+								glTexCoord2f(0,0.3); glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
+								glTexCoord2f(0,0.3); glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
 							glEnd();
 
 						}

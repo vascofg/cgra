@@ -66,4 +66,10 @@ public:
     pointerAppearance();
 };
 
+// Material for the robot
+class robotAppearance: public CGFappearance{
+public:
+    public:
+	robotAppearance();
+};
 #endif
