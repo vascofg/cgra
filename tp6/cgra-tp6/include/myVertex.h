@@ -10,4 +10,11 @@ public:
 	void rotateY(double angleRad);
 };
 
+class mySemiRect {
+	public:
+		myVertex begin;
+		myVertex end;
+		double divideStep;
+		mySemiRect(myVertex begin, myVertex end, double divideStep);
+};
 #endif /* MYVERTEX_H_ */

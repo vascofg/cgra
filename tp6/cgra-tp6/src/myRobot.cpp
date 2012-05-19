@@ -12,7 +12,7 @@ myRobot::myRobot(int stacks) {
 
 void myRobot::draw() {
 
-	// Some pre-calculus
+	// (1) Some pre-calculus
 	int slices=12;
 	double baseAngle = (360 / (float)slices);
 	double baseAngleR = (2 * acos(-1) / (float)slices);
@@ -20,84 +20,86 @@ void myRobot::draw() {
 	double apothem = (tan(baseAngleR / 2));
 	double heightTop=1;
 
-	// (1) The robot translations and rotations
+	// (2) The robot translations and rotations
 	glTranslated(moveX, 0, moveZ);
 	glRotated(rotAngle, 0, 1, 0);
 
-	// (2) Let the Robot draw begin
+	// (3) Let the Robot draw begin
 	glPushMatrix();
 	// ->
 
+	// Draw the top circle
 	for (int i = 0; i < 12; i++) {
 		glPushMatrix();
-		glNormal3f(1, 0, 0); // need to define normal to x
-		glRotated((i-2) * baseAngle, 0, 1, 0);
-		glTranslated((baseWidth / 2) / apothem, 0, 0);
-		glRotated(-90, 0, 1, 0);
-		// Top triangle
-					glNormal3f(0, 1, 0); // need to define normal to y
-					glBegin(GL_TRIANGLES);
-						glTexCoord2f(0,360/(float)slices); glVertex3d(baseWidth / 2, 1, 0);
-						glTexCoord2f(0.5,0.5); glVertex3d(-baseWidth / 2, 1, 0);
-						glTexCoord2f(360/(float)slices,360/(float)slices); glVertex3d(0, 1, 0.25);
-					glEnd();
+			// Apply the necessary transformations
+			glNormal3f(1, 0, 0);
+			glRotated((i-2) * baseAngle, 0, 1, 0);
+			glTranslated((baseWidth / 2) / apothem, 0, 0);
+			glRotated(-90, 0, 1, 0);
+			// Normal to the surface
+			glNormal3f(0, 1, 0);
+			// Draw a triangle
+			glBegin(GL_TRIANGLES);
+				glTexCoord2f(0,360/(float)slices); glVertex3d(baseWidth / 2, 1, 0);
+				glTexCoord2f(0.5,0.5); glVertex3d(-baseWidth / 2, 1, 0);
+				glTexCoord2f(360/(float)slices,360/(float)slices); glVertex3d(0, 1, 0.25);
+			glEnd();
 		glPopMatrix();
 	}
 
 
-		// square
-		glBegin(GL_QUADS);
-			glVertex3d(-0.5, 0, -0.5);
-			glVertex3d(-0.5, 0, 0.5);
-			glVertex3d(0.5, 0, 0.5);
-			glVertex3d(0.5, 0, -0.5);
-		glEnd();
+	// Draw the bottom square
+	glBegin(GL_QUADS);
+		glVertex3d(-0.5, 0, -0.5);
+		glVertex3d(-0.5, 0, 0.5);
+		glVertex3d(0.5, 0, 0.5);
+		glVertex3d(0.5, 0, -0.5);
+	glEnd();
 
-		/* circle
+
+	// Compute the top triangle joint initial poins
+	double zl=0.25*cos(baseAngleR*3/2.0);
+	double zr=0.25*cos(baseAngleR*1/2.0);
+	double xl=0.25*sin(baseAngleR*3/2.0);
+	double xr=0.25*sin(baseAngleR*1/2.0);
+
+
+	// Draw all the side rectangles
+
+	for( int j=0; j<stacks; j++){ // stacks
 		glPushMatrix();
-			glRotated(180 / 12, 0, 1, 0);
-			glRotated(-90, 1, 0, 0);
-			glTranslated(0, 0, 1);
-			gluDisk(quadric, 0, 0.25, 12, 1);
-		glPopMatrix();
-		*/
+			glTranslated(0, j, 0);
 
-		// Compute the first triangle points
-		double zl=0.25*cos(baseAngleR*3/2.0);
-		double zr=0.25*cos(baseAngleR*1/2.0);
-		double xl=0.25*sin(baseAngleR*3/2.0);
-		double xr=0.25*sin(baseAngleR*1/2.0);
-
-
-		// side rectangles
-		for( int j=0; j<stacks; j++){
+			for(int l=0; l<4; l++){ // the 4 square faces
 				glPushMatrix();
-					glTranslated(0, j, 0);
-					// Rotate and copy the 3 faces
-					for(int l=0; l<4; l++){
-						glPushMatrix();
-						glRotated(90*l,0,1,0);
-						for (int i = 0; i < 3; i++) {
+					glRotated(90*l,0,1,0);
+
+						for (int i = 0; i < 3; i++) { // a face set of rectangles
+							// Compute the triangle joints
 							myVertex triangleLeft(xl,1,zl);
 							triangleLeft.rotateY(-baseAngleR*i);
 							myVertex triangleRight(xr,1,zr);
 							triangleRight.rotateY(-baseAngleR*i);
-							   // Draw one face
-								glNormal3f(0,1,0);
-								glBegin(GL_QUADS);
-									// Computing the connections on top
-									glVertex3d(0.5-1/3.0*i , 0 ,0.5);
-									glVertex3d(triangleLeft.x, 1 ,triangleLeft.z);
-									glVertex3d(triangleRight.x, 1 ,triangleRight.z);
-									glVertex3d((0.5-1/3.0)-1/3.0*i, 0,0.5);
-								glEnd();
+							// Compute the normal
+							myVertex normal(0,0,1);
+							normal.rotateY(baseAngleR);
+							glNormal3f(normal.x,normal.y,normal.z);
+							// Draw a rectangle from the square to the triangle joint
+							glBegin(GL_QUADS);
+							    glVertex3d(0.5-1/3.0*i , 0 ,0.5);
+								glVertex3d(triangleLeft.x, 1 ,triangleLeft.z);
+								glVertex3d(triangleRight.x, 1 ,triangleRight.z);
+								glVertex3d((0.5-1/3.0)-1/3.0*i, 0,0.5);
+							glEnd();
 
 						}
-						glPopMatrix();
+				glPopMatrix(); // matrix of face set of rectangles
 					}
-				glPopMatrix();
+		glPopMatrix(); //  matrix of the 4 square faces
 			}
-	// ->
+
+
+	// END ROBOT DRAW ->
 	glPopMatrix();
 
 }

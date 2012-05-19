@@ -10,11 +10,8 @@ myVertex::myVertex(double x, double y, double z) {
 
 }
 void myVertex::rotateY(double angleRad){
-	//cout <<" AngleRad= " << angleRad << endl;
-	double xtemp=x;
+	double xtemp=x; // one does not simply use the changed x in the z equation
 	x=x*cos(angleRad)+z*sin(angleRad);
 	z=-xtemp*sin(angleRad)+z*cos(angleRad);
-	cout << "x: " << x << endl;
-	cout << "z: " << z << endl;
 
 }
