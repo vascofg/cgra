@@ -15,3 +15,21 @@ void myVertex::rotateY(double angleRad){
 	z=-xtemp*sin(angleRad)+z*cos(angleRad);
 
 }
+mySemiRect::mySemiRect(myVertex *begin, myVertex *end, double divideStep){
+	this->begin=begin;
+	this->end=end;
+	this->divideStep=divideStep;
+
+	deltaX=end->x - begin->x;
+	deltaX=deltaX/divideStep;
+
+	deltaY=end->y - begin->y;
+	deltaY=deltaY/divideStep;
+
+	deltaZ=end->z - begin->z;
+	deltaZ=deltaZ/divideStep;
+}
+
+myVertex mySemiRect::getVertexT(int t){
+	return myVertex(begin->x+deltaX*t,begin->y+deltaY*t,begin->z+deltaZ*t);
+}

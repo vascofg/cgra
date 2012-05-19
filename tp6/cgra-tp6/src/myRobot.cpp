@@ -68,7 +68,6 @@ void myRobot::draw() {
 
 	for( int j=0; j<stacks; j++){ // stacks
 		glPushMatrix();
-			glTranslated(0, j, 0);
 
 			for(int l=0; l<4; l++){ // the 4 square faces
 				glPushMatrix();
@@ -85,11 +84,15 @@ void myRobot::draw() {
 							normal.rotateY(baseAngleR);
 							glNormal3f(normal.x,normal.y,normal.z);
 							// Draw a rectangle from the square to the triangle joint
+							// Compute a semi rect from the square to triangle
+							mySemiRect left(new myVertex(0.5-1/3.0*i,0,0.5),new myVertex(triangleLeft.x, 1 ,triangleLeft.z),stacks);
+							mySemiRect right(new myVertex((0.5-1/3.0)-1/3.0*i, 0,0.5),new myVertex(triangleRight.x, 1 ,triangleRight.z),stacks);
+
 							glBegin(GL_QUADS);
-							    glVertex3d(0.5-1/3.0*i , 0 ,0.5);
-								glVertex3d(triangleLeft.x, 1 ,triangleLeft.z);
-								glVertex3d(triangleRight.x, 1 ,triangleRight.z);
-								glVertex3d((0.5-1/3.0)-1/3.0*i, 0,0.5);
+							    glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
+								glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
+								glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
+								glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
 							glEnd();
 
 						}

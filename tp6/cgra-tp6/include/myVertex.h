@@ -12,9 +12,11 @@ public:
 
 class mySemiRect {
 	public:
-		myVertex begin;
-		myVertex end;
+		myVertex *begin;
+		myVertex *end;
 		double divideStep;
-		mySemiRect(myVertex begin, myVertex end, double divideStep);
+		double deltaX,deltaY,deltaZ;
+		mySemiRect(myVertex *begin, myVertex *end, double divideStep);
+		myVertex getVertexT(int t);
 };
 #endif /* MYVERTEX_H_ */
