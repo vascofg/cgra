@@ -77,11 +77,11 @@ void myRobot::draw() {
 					for(int l=0; l<4; l++){
 						glPushMatrix();
 						glRotated(90*l,0,1,0);
-						for (int i = 0; i < 1; i++) {
+						for (int i = 0; i < 3; i++) {
 							myVertex triangleLeft(xl,1,zl);
-							triangleLeft.rotateY(baseAngleR*i);
+							triangleLeft.rotateY(-baseAngleR*i);
 							myVertex triangleRight(xr,1,zr);
-							triangleRight.rotateY(baseAngleR*i);
+							triangleRight.rotateY(-baseAngleR*i);
 							   // Draw one face
 								glNormal3f(0,1,0);
 								glBegin(GL_QUADS);
