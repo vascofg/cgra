@@ -9,6 +9,8 @@ public:
 	double z;
 	myVertex(double x, double y, double z);
 	void rotateY(double angleRad);
+	void rotateZ(double angleRad);
+	void translate(double dx, double dy, double dz);
 };
 
 class mySemiRect {

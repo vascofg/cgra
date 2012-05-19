@@ -8,6 +8,10 @@ myRobot::myRobot(int stacks) {
 	rotAngle = -157.5;
 	quadric = gluNewQuadric();
 	this->stacks = stacks;
+
+	// Compute the uv points
+	computeUVPoints(UVsquareVertexs,UVcircleVertexs);
+
 }
 
 void myRobot::draw() {
@@ -40,9 +44,9 @@ void myRobot::draw() {
 			glNormal3f(0, 1, 0);
 			// Draw a triangle
 			glBegin(GL_TRIANGLES);
-				glTexCoord2f(0,360/(float)slices); glVertex3d(baseWidth / 2, 1, 0);
-				glTexCoord2f(0.5,0.5); glVertex3d(-baseWidth / 2, 1, 0);
-				glTexCoord2f(360/(float)slices,360/(float)slices); glVertex3d(0, 1, 0.25);
+				glVertex3d(baseWidth / 2, 1, 0);
+				glVertex3d(-baseWidth / 2, 1, 0);
+			    glVertex3d(0, 1, 0.25);
 			glEnd();
 		glPopMatrix();
 	}
@@ -66,12 +70,13 @@ void myRobot::draw() {
 
 	// Draw all the side rectangles
 
+
 	for( int j=0; j<stacks; j++){ // stacks
 		glPushMatrix();
-
+		int uvIndex=0;
 			for(int l=0; l<4; l++){ // the 4 square faces
 				glPushMatrix();
-					glRotated(90*l,0,1,0);
+					glRotated(-90*l,0,1,0);
 
 						for (int i = 0; i < 3; i++) { // a face set of rectangles
 							// Compute the triangle joints
@@ -99,14 +104,23 @@ void myRobot::draw() {
 							polVertexs.push_back(*v3);
 							polVertexs.push_back(*v4);
 							myVertex normal=computeNormalNewel(polVertexs);
-							glNormal3f(normal.x,normal.y,normal.z);
+							glNormal3f(-normal.x,-normal.y,-normal.z);
+
+							// Fecth the UV coordinates
+							myVertex s1=UVsquareVertexs[uvIndex];
+							myVertex c1=UVcircleVertexs[uvIndex];
+							uvIndex++;
+							myVertex s2=UVsquareVertexs[uvIndex];
+							myVertex c2=UVcircleVertexs[uvIndex];
 
 							// Reactangle draw
 							glBegin(GL_QUADS);
-								glTexCoord2f(0,0.3); glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
-								glTexCoord2f(0,0.3); glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
-								glTexCoord2f(0,0.3); glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
-								glTexCoord2f(0,0.3); glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
+
+								// Draw
+								glTexCoord2f(s1.x,s1.y); glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
+								glTexCoord2f(c1.x,c1.y); glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
+								glTexCoord2f(c2.x,c2.y); glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
+								glTexCoord2f(s2.x,s2.y); glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
 							glEnd();
 
 						}
@@ -122,5 +136,45 @@ void myRobot::draw() {
 }
 
 void myRobot::update(long milis) {
+
+}
+
+void computeUVPoints(vector<myVertex> &squareVertexs,vector<myVertex> &circleVertex){
+	int slices=12;
+	double baseAngle = (360 / (float)slices);
+	double baseAngleR = (2 * acos(-1) / (float)slices);
+
+	// Compute UV initial points
+	myVertex uvSquare(1,0,0);
+	myVertex uvCircle(0.5+sin(3/2.0*baseAngleR)*0.25,0.5-cos(3/2.0*baseAngleR)*0.25,0);
+
+	for(int unsigned i=0; i<4; i++){
+		myVertex versor(-1/3.0,0,0);
+		versor.rotateZ(-acos(-1)/2.0*i);
+		for(int unsigned j=0; j<3; j++){
+			// points 1
+			myVertex s1=uvSquare;
+			myVertex c1=uvCircle;
+
+			// Transform the square vertex
+			uvSquare.translate(versor.x,versor.y,0);
+
+			// Rotate the circle vertex
+			uvCircle.translate(-0.5,-0.5,0);
+			uvCircle.rotateZ(-baseAngleR);
+			uvCircle.translate(0.5,0.5,0);
+
+			// points 2
+			myVertex s2=uvSquare;
+			myVertex c2=uvCircle;
+
+
+			// add to the vectors
+			squareVertexs.push_back(s1);
+			squareVertexs.push_back(s2);
+			circleVertex.push_back(c1);
+			circleVertex.push_back(c2);
+		}
+	}
 
 }

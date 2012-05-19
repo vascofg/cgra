@@ -15,6 +15,18 @@ void myVertex::rotateY(double angleRad) {
 	z = -xtemp * sin(angleRad) + z * cos(angleRad);
 
 }
+
+void myVertex::rotateZ(double angleRad){
+	double xtemp=x;
+	x = x * cos(angleRad) - y * sin(angleRad);
+	y = xtemp * sin(angleRad) + y * cos(angleRad);
+}
+
+void myVertex::translate(double dx, double dy, double dz){
+	x=x+dx;
+	y=y+dy;
+	z=z+dz;
+}
 mySemiRect::mySemiRect(myVertex *begin, myVertex *end, double divideStep) {
 	this->begin = begin;
 	this->end = end;
@@ -48,3 +60,5 @@ myVertex computeNormalNewel(vector<myVertex> vertexList) {
 	return normal;
 
 }
+
+
