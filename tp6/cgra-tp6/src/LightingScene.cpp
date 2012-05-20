@@ -96,7 +96,6 @@ void LightingScene::display() {
     // ---- END Background, camera and axis setup
 
     // ---- BEGIN Primitive drawing section
-    cout << "Tex:" << robotTexture << endl;
     // Robot
 
     robotMaterial= new robotAppearance(robotTexture);

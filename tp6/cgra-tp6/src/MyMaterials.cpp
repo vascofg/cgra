@@ -132,8 +132,8 @@ robotAppearance::robotAppearance(int textureID){
 	float shininess = 120.f;
 	switch(textureID){
 		case 1: this->setTexture("textures/robot1.jpg"); break;
-		case 2: this->setTexture("textures/robotcop.jpg"); break;
-		case 3: this->setTexture("textures/robot1.jpg"); break;
+		case 2: this->setTexture("textures/robotcop.png"); break;
+		case 3: this->setTexture("textures/table.png"); break;
 	}
 
 	this->setAmbient(amb);
