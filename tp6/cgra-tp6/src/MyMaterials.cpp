@@ -143,3 +143,18 @@ robotAppearance::robotAppearance(int textureID){
 
 }
 
+landscapeAppearance::landscapeAppearance(){
+
+	float amb[3] = { 0.6, 0.6, 0.6 };
+	float dif[3] = { 0.4, 0.4, 0.4 };
+	float spec[3] = { 0.3, 0.3,0.3 };
+	float shininess = 120.f;
+	this->setTexture("textures/landscape.png");
+	this->setAmbient(amb);
+	this->setDiffuse(dif);
+	this->setSpecular(spec);
+	this->shininess = shininess;
+
+}
+
+

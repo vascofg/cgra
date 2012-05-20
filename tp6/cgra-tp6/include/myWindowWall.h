@@ -1,11 +1,11 @@
 #ifndef MYWINDOWWALL_H_
 #define MYWINDOWWALL_H_
-
+#include "myMaterials.h"
 #include "Plane.h"
 class myWindowWall: public CGFobject {
-	Plane* leftWall;
+	landscapeAppearance * landscapeMaterial;
 public:
-	myWindowWall(){};
+	myWindowWall();
 	void draw();
 
 };

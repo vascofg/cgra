@@ -72,4 +72,11 @@ public:
     public:
 	robotAppearance(int textureID);
 };
+
+// Material for the landscape
+class landscapeAppearance: public CGFappearance{
+public:
+    public:
+	landscapeAppearance();
+};
 #endif
