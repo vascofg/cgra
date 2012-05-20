@@ -10,6 +10,7 @@
 #include "cmath"
 #include "myUnitCube.h"
 #include "MyClockHand.h"
+#include "myMaterials.h"
 #include "CGF/CGFappearance.h"
 
 /**
@@ -18,7 +19,7 @@
 class MyClockHand: public CGFobject {
     float angle;						/* The angle of the pointer for rotation */
     myUnitCube *pointer;				/* The pointer object*/
-    CGFappearance *pointerMaterial;		/* The pointer material*/
+    pointerAppearance  *pointerMaterial;		/* The pointer material*/
     float xScale,yScale,zScale;			/* x, y and z scaling values*/
     
 public:
