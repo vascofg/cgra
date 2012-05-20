@@ -12,14 +12,7 @@ void MyClockHand::setScale(float x,float y, float z) {
 }
 
 MyClockHand::MyClockHand() {
-    // Appearance
-    pointerMaterial = new CGFappearance();
-    float amb[3] = {0.02, 0.2, 0.0};
-    float dif[3] = {0.2, 0, 0};
-    float spec[3] = {0.4, 0, 0};
-    pointerMaterial->setAmbient(amb);
-    pointerMaterial->setDiffuse(dif);
-    pointerMaterial->setSpecular(spec);
+    // Variables initialization
     xScale=1;
     yScale=1;
     zScale=1;
@@ -31,6 +24,7 @@ void MyClockHand::draw() {
     glRotated(-angle, 0, 0, 1);
     pointerAppearance material;
     material.apply();
+
     // Basic Shape
     glPushMatrix();
     glScaled(xScale,yScale,zScale);

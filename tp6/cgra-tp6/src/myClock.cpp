@@ -1,22 +1,30 @@
+/****************************************************************************
+ * Author:	- André Freitas, p.andrefreitas@gmail.com / ei10036@fe.up.pt	*
+ * Author:	- Vasco Gonçalves, vascofg@gmail.com / ei10054@fe.up.pt			*
+ * Copyright: - 21/05/2012, Computação Gráfica, FEUP						*
+ ****************************************************************************/
 #include "myClock.h"
 #include "myMaterials.h"
 #include "MyClockHand.h"
 #include <iostream>
 using namespace std;
+
 myClock::myClock(){
+	// Allocate memory
     c=new myCylinder(12,1,0);
     seconds= new MyClockHand;
     minutes= new MyClockHand;
     hours= new MyClockHand;
+    clockMaterial=new clockAppearance();
+
+    // Initialize variables
     angleSeconds=0;
     angleMinutes=0;
     angleHours=0;
-    
 }
 
 void myClock::draw(){
     // Clock appearance
-    clockAppearance *clockMaterial=new clockAppearance();
     clockMaterial->apply();
     glEnable (GL_TEXTURE_2D);
     
@@ -50,10 +58,6 @@ void myClock::draw(){
             hours->setAngle(90+angleHours);
             hours->draw();
     glPopMatrix();
-
-
-
-    
 }
  void myClock::update(long milis){
      // Calculate seconds and angle
