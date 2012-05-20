@@ -5,14 +5,15 @@
  ****************************************************************************/
 #include "myCylinder.h"
 #include <iostream>
+#define PI acos(-1)
 using namespace std;
 myCylinder::myCylinder(int slices, int stacks, bool smooth) {
 	this->slices = slices;
 	this->stacks = stacks;
 	this->smooth=smooth;
 	baseAngle = (360 / (float)slices);
-	baseAngleR = (2 * acos(-1) / (float)slices);
-	baseWidth = sin(2 * acos(-1) / (float)slices);
+	baseAngleR = (2 * PI / (float)slices);
+	baseWidth = sin(2 * PI / (float)slices);
 	apothem = (tan(baseAngleR / 2));
 }
 

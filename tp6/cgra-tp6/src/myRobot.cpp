@@ -8,6 +8,7 @@
 #include "myMaterials.h"
 #include <iostream>
 #include <myVertex.h>
+#define PI acos(-1)
 using namespace std;
 
 myRobot::myRobot(int stacks) {
@@ -17,8 +18,8 @@ myRobot::myRobot(int stacks) {
 	slices=12;
 	topRadius=0.25;
 	baseAngle = (360 / (float)slices);
-    baseAngleR = (2 * acos(-1) / (float)slices);
-	baseWidth = sin(2 * acos(-1) *topRadius/ (float)slices);
+    baseAngleR = (2 * PI / (float)slices);
+	baseWidth = sin(2 * PI *topRadius/ (float)slices);
     apothem = (tan(baseAngleR / 2));
 	heightTop=1;
 	computeCoords(coords,UVCoords,normals);
@@ -90,10 +91,10 @@ void myRobot::computeCoords(vector<myVertex*> &coords,vector<myVertex*> &UVCoord
 				s2.translate(-0.5,-0.5,0);
 				c1.translate(-0.5,-0.5,0);
 				c2.translate(-0.5,-0.5,0);
-				s1.rotateZ(-l*acos(-1)/2.0);
-				s2.rotateZ(-l*acos(-1)/2.0);
-				c1.rotateZ(-l*acos(-1)/2.0);
-				c2.rotateZ(-l*acos(-1)/2.0);
+				s1.rotateZ(-l*PI/2.0);
+				s2.rotateZ(-l*PI/2.0);
+				c1.rotateZ(-l*PI/2.0);
+				c2.rotateZ(-l*PI/2.0);
 				s1.translate(0.5,0.5,0);
 				s2.translate(0.5,0.5,0);
 				c1.translate(0.5,0.5,0);
