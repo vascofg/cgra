@@ -1,3 +1,9 @@
+/****************************************************************************
+ * Author:	- André Freitas, p.andrefreitas@gmail.com / ei10036@fe.up.pt	*
+ * Author:	- Vasco Gonçalves, vascofg@gmail.com / ei10054@fe.up.pt			*
+ * Copyright: - 21/05/2012, Computação Gráfica, FEUP						*
+ ****************************************************************************/
+
 #include "myRobot.h"
 #include "myMaterials.h"
 #include <iostream>
@@ -12,7 +18,7 @@ myRobot::myRobot(int stacks) {
 	topRadius=0.25;
 	baseAngle = (360 / (float)slices);
     baseAngleR = (2 * acos(-1) / (float)slices);
-	baseWidth = sin(2 * acos(-1) *topRadius/ (float)slices); // 0.25 is the radius
+	baseWidth = sin(2 * acos(-1) *topRadius/ (float)slices);
     apothem = (tan(baseAngleR / 2));
 	heightTop=1;
 	computeCoords(coords,UVCoords,normals);
@@ -30,39 +36,7 @@ void myRobot::draw() {
 	glPushMatrix();
 		drawTop();
 		drawBottom();
-
-	// The necessary index
-	int UVIndex=0, coordIndex=0, normalsIndex=0;
-	for( int j=0; j<stacks; j++){ // stacks
-		glPushMatrix();
-
-			for(int l=0; l<4; l++){ // the 4 square faces
-				glPushMatrix();
-					glRotated(-90*l,0,1,0);
-
-						for (int i = 0; i < 3; i++) { // a face set of rectangles
-
-							glNormal3f(normals[normalsIndex]->x,normals[normalsIndex]->y,normals[normalsIndex]->z);
-							normalsIndex++;
-
-
-							// Reactangle draw
-							glBegin(GL_QUADS);
-								for (int unsigned a=0; a<4; a++){
-									glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y ); glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
-									UVIndex++; coordIndex++;
-								}
-
-							glEnd();
-
-						}
-				glPopMatrix(); // matrix of face set of rectangles
-					}
-		glPopMatrix(); //  matrix of the 4 square faces
-			}
-
-
-	// END ROBOT DRAW ->
+		drawSides();
 	glPopMatrix();
     glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
 }
@@ -199,4 +173,29 @@ void myRobot::drawBottom(){
 			glVertex3d(0.5, 0, 0.5);
 			glVertex3d(0.5, 0, -0.5);
 		glEnd();
+}
+void myRobot::drawSides(){
+	// The necessary index
+		int UVIndex=0, coordIndex=0, normalsIndex=0;
+		for( int j=0; j<stacks; j++){ // stacks
+			glPushMatrix();
+
+				for(int l=0; l<4; l++){ // the 4 square faces
+					glPushMatrix();
+						glRotated(-90*l,0,1,0);
+							for (int i = 0; i < 3; i++) { // a face set of rectangles
+								glNormal3f(normals[normalsIndex]->x,normals[normalsIndex]->y,normals[normalsIndex]->z);
+								normalsIndex++;
+								// face draw
+								glBegin(GL_QUADS);
+									for (int unsigned a=0; a<4; a++){
+										glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y ); glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
+										UVIndex++; coordIndex++;
+									}
+								glEnd();
+							}
+					glPopMatrix(); // matrix of face set of rectangles
+						}
+			glPopMatrix(); //  matrix of the 4 square faces
+				}
 }
