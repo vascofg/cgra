@@ -4,8 +4,7 @@
 #include "myUnitCube.h"
 #include "myRobot.h"
 #include <math.h>
-#include <iostream>
-using namespace std;
+
 // Global ambient light (do not confuse with ambient component of individual lights)
 float globalAmbientLight[4] = {0, 0, 0, 1.0};
 
@@ -51,6 +50,7 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
+    robotMaterial= new robotAppearance();
 
     // set update rate
     setUpdatePeriod(100);
@@ -96,10 +96,8 @@ void LightingScene::display() {
     // ---- END Background, camera and axis setup
 
     // ---- BEGIN Primitive drawing section
-    cout << "Tex:" << robotTexture << endl;
-    // Robot
 
-    robotMaterial= new robotAppearance(robotTexture);
+    // Robot
     glPushMatrix();
     	glTranslated(7.5, 5, 7.5);
     	robotMaterial->apply();

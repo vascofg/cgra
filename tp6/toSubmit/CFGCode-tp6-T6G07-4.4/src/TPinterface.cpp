@@ -1,7 +1,6 @@
 #include "TPinterface.h"
 #include "LightingScene.h"
-#include <iostream>
-using namespace std;
+
 TPinterface::TPinterface() {
     testVar = 0;
 }
@@ -48,18 +47,6 @@ void TPinterface::initGUI() {
     addCheckboxToPanel(varPanel, "Light Board A", &(((LightingScene*) scene)->lightBoardAon), 1);
     addCheckboxToPanel(varPanel, "Light Board B", &(((LightingScene*) scene)->lightBoardBon), 1);
     addButtonToPanel(varPanel, "Pause Clock", 4);
-
-    // Multi texture support
-    int tex;
-    GLUI_Panel *texPanel= addPanel("Robot", 1);
-    GLUI_Listbox *texturasList=addListboxToPanel(texPanel,"Textura ", &(((LightingScene*) scene)->robotTexture),1);
-    texturasList->add_item(1,"Original");
-    texturasList->add_item(2,"RobotCop");
-    texturasList->add_item(3,"Wood");
-
-
-
-
 }
 
 void TPinterface::processGUI(GLUI_Control *ctrl) {

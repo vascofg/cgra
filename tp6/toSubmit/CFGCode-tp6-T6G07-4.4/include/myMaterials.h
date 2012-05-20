@@ -70,6 +70,6 @@ public:
 class robotAppearance: public CGFappearance{
 public:
     public:
-	robotAppearance(int textureID);
+	robotAppearance();
 };
 #endif

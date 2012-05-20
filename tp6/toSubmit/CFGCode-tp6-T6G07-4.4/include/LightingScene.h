@@ -27,7 +27,6 @@ public:
 	~LightingScene();
         void toggleSomething();
         int light0on, lightBoardAon, lightBoardBon, clockon;
-        int robotTexture;
         //Robot variables
         void moveRobot(double rotAngle, double moveDist);
 protected:

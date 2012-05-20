@@ -124,22 +124,17 @@ pointerAppearance::pointerAppearance(){
 }
 
 
-robotAppearance::robotAppearance(int textureID){
+robotAppearance::robotAppearance(){
 
 	float amb[3] = { 0.6, 0.6, 0.6 };
 	float dif[3] = { 0.4, 0.4, 0.4 };
 	float spec[3] = { 0.3, 0.3,0.3 };
 	float shininess = 120.f;
-	switch(textureID){
-		case 1: this->setTexture("textures/robot1.jpg"); break;
-		case 2: this->setTexture("textures/robotcop.jpg"); break;
-		case 3: this->setTexture("textures/robot1.jpg"); break;
-	}
 
+	this->setTexture("textures/robot1.jpg");
 	this->setAmbient(amb);
 	this->setDiffuse(dif);
 	this->setSpecular(spec);
 	this->shininess = shininess;
 
 }
-
