@@ -53,6 +53,7 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
+    robotMaterial= new robotAppearance(robotTexture);
     // set update rate
     setUpdatePeriod(100);
     timeSet = false;
@@ -98,7 +99,7 @@ void LightingScene::display() {
 
     // ---- BEGIN Primitive drawing section
     // Robot
-    robotMaterial= new robotAppearance(robotTexture);
+    robotMaterial->setTextureID(robotTexture);
     glPushMatrix();
     	glTranslated(7.5, 0, 7.5);
     	robot->setDrawmode(robotDrawMode);

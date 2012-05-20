@@ -6,23 +6,25 @@ using namespace std;
 
 myRobot::myRobot(int stacks) {
 	rotAngle = -157.5;
-	quadric = gluNewQuadric();
 	this->stacks = stacks;
 
-	// Compute the uv points
-	computeUVPoints(UVsquareVertexs,UVcircleVertexs);
-
+	// (1) Some pre-calculus
+	slices=12;
+	topRadius=0.25;
+	baseAngle = (360 / (float)slices);
+    baseAngleR = (2 * acos(-1) / (float)slices);
+	baseWidth = sin(2 * acos(-1) *topRadius/ (float)slices); // 0.25 is the radius
+    apothem = (tan(baseAngleR / 2));
+	heightTop=1;
 }
 
 void myRobot::draw() {
+
 	if(drawMode==1) glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+
 	// (1) Some pre-calculus
-	int slices=12;
-	double baseAngle = (360 / (float)slices);
-	double baseAngleR = (2 * acos(-1) / (float)slices);
-	double baseWidth = sin(2 * acos(-1) *0.25/ (float)slices); // 0.25 is the radius
-	double apothem = (tan(baseAngleR / 2));
-	double heightTop=1;
+
+
 
 	// (2) The robot translations and rotations
 	glTranslated(moveX, 0, moveZ);
