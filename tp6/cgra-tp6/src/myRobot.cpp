@@ -74,6 +74,7 @@ void myRobot::draw() {
 	for( int j=0; j<stacks; j++){ // stacks
 		glPushMatrix();
 		int uvIndex=0;
+
 			for(int l=0; l<4; l++){ // the 4 square faces
 				glPushMatrix();
 					glRotated(-90*l,0,1,0);
@@ -107,20 +108,37 @@ void myRobot::draw() {
 							glNormal3f(-normal.x,-normal.y,-normal.z);
 
 							// Fecth the UV coordinates
-							myVertex s1=UVsquareVertexs[uvIndex];
-							myVertex c1=UVcircleVertexs[uvIndex];
+							myVertex s1=left.getVertexT(j); s1.translate(0.5,0,0); s1.y=0;
+							myVertex c1=left.getVertexT(j+1); c1.translate(0.5,-0.5,0);
 							uvIndex++;
-							myVertex s2=UVsquareVertexs[uvIndex];
-							myVertex c2=UVcircleVertexs[uvIndex];
+							myVertex s2=right.getVertexT(j); s2.translate(0.5,0,0); s2.y=0;
+							myVertex c2=right.getVertexT(j+1); c2.translate(0.5,-0.5,0);
 
+							// Transformations of UV
+							s1.translate(-0.5,-0.5,0);
+							s2.translate(-0.5,-0.5,0);
+							c1.translate(-0.5,-0.5,0);
+							c2.translate(-0.5,-0.5,0);
+							s1.rotateZ(-l*acos(-1)/2.0);
+							s2.rotateZ(-l*acos(-1)/2.0);
+							c1.rotateZ(-l*acos(-1)/2.0);
+							c2.rotateZ(-l*acos(-1)/2.0);
+							s1.translate(0.5,0.5,0);
+							s2.translate(0.5,0.5,0);
+							c1.translate(0.5,0.5,0);
+							c2.translate(0.5,0.5,0);
+
+							// Parametric semi-rects
+							mySemiRect UVleft(&s1,&c1,stacks);
+							mySemiRect UVright(&s2,&c2,stacks);
 							// Reactangle draw
 							glBegin(GL_QUADS);
 
 								// Draw
-								glTexCoord2f(s1.x,s1.y); glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
-								glTexCoord2f(c1.x,c1.y); glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
-								glTexCoord2f(c2.x,c2.y); glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
-								glTexCoord2f(s2.x,s2.y); glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
+								glTexCoord2f(UVleft.getVertexT(j).x,UVleft.getVertexT(j).y ); glVertex3d(left.getVertexT(j).x , left.getVertexT(j).y ,left.getVertexT(j).z);
+								glTexCoord2f(UVleft.getVertexT(j+1).x,UVleft.getVertexT(j+1).y); glVertex3d(left.getVertexT(j+1).x , left.getVertexT(j+1).y ,left.getVertexT(j+1).z);
+								glTexCoord2f(UVright.getVertexT(j+1).x,UVright.getVertexT(j+1).y); glVertex3d(right.getVertexT(j+1).x , right.getVertexT(j+1).y ,right.getVertexT(j+1).z);
+								glTexCoord2f(UVright.getVertexT(j).x , UVright.getVertexT(j).y); glVertex3d(right.getVertexT(j).x , right.getVertexT(j).y ,right.getVertexT(j).z);
 							glEnd();
 
 						}
@@ -143,6 +161,12 @@ void computeUVPoints(vector<myVertex> &squareVertexs,vector<myVertex> &circleVer
 	int slices=12;
 	double baseAngle = (360 / (float)slices);
 	double baseAngleR = (2 * acos(-1) / (float)slices);
+
+	double zl=0.25*cos(baseAngleR*3/2.0);
+	double zr=0.25*cos(baseAngleR*1/2.0);
+	double xl=0.25*sin(baseAngleR*3/2.0);
+	double xr=0.25*sin(baseAngleR*1/2.0);
+
 
 	// Compute UV initial points
 	myVertex uvSquare(1,0,0);
