@@ -48,14 +48,11 @@ void myRobot::draw() {
 
 							// Reactangle draw
 							glBegin(GL_QUADS);
-								glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y ); glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
-								UVIndex++; coordIndex++;
-								glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y );  glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
-								UVIndex++; coordIndex++;
-								glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y );  glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
-								UVIndex++; coordIndex++;
-								glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y ); glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
-								UVIndex++; coordIndex++;
+								for (int unsigned a=0; a<4; a++){
+									glTexCoord2f(UVCoords[UVIndex]->x,UVCoords[UVIndex]->y ); glVertex3d(coords[coordIndex]->x , coords[coordIndex]->y ,coords[coordIndex]->z);
+									UVIndex++; coordIndex++;
+								}
+
 							glEnd();
 
 						}
