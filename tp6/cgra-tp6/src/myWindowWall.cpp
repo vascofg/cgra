@@ -1,12 +1,16 @@
+/****************************************************************************
+ * Author:	- André Freitas, p.andrefreitas@gmail.com / ei10036@fe.up.pt	*
+ * Author:	- Vasco Gonçalves, vascofg@gmail.com / ei10054@fe.up.pt			*
+ * Copyright: - 21/05/2012, Computação Gráfica, FEUP						*
+ ****************************************************************************/
 #include "myWindowWall.h"
 #include "myMaterials.h"
 myWindowWall::myWindowWall(){
 		landscapeMaterial= new landscapeAppearance();
 
-	};
+};
+
 void myWindowWall::draw() {
-
-
 
 	// Plane with window
 	for (int unsigned h = 0; h < 3; h++) {

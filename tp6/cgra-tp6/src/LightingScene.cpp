@@ -1,3 +1,8 @@
+/****************************************************************************
+ * Author:	- André Freitas, p.andrefreitas@gmail.com / ei10036@fe.up.pt	*
+ * Author:	- Vasco Gonçalves, vascofg@gmail.com / ei10054@fe.up.pt			*
+ * Copyright: - 21/05/2012, Computação Gráfica, FEUP						*
+ ****************************************************************************/
 #include "LightingScene.h"
 #include "CGFaxis.h"
 #include "CGFapplication.h"
@@ -36,7 +41,6 @@ void LightingScene::init() {
 
     // Declares objects
     table = new myTable();
-    leftWall = new Plane(20);
     planeWall = new Plane();
     floor = new Plane();
     boardA = new Plane(BOARD_A_DIVISIONS);
@@ -56,7 +60,6 @@ void LightingScene::init() {
     robotMaterial= new robotAppearance(robotTexture);
     // set update rate
     setUpdatePeriod(100);
-    timeSet = false;
     
     clockon=1;
     
