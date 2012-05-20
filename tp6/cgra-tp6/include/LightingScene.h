@@ -28,6 +28,7 @@ public:
         void toggleSomething();
         int light0on, lightBoardAon, lightBoardBon, clockon;
         int robotTexture;
+        int robotDrawMode;
         //Robot variables
         void moveRobot(double rotAngle, double moveDist);
 protected:

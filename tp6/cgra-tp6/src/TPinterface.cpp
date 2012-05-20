@@ -57,6 +57,11 @@ void TPinterface::initGUI() {
     texturasList->add_item(2,"RobotCop");
     texturasList->add_item(3,"Wood");
 
+    // Robot DrawMode
+    GLUI_RadioGroup *drawMode=addRadioGroupToPanel(texPanel,&(((LightingScene*) scene)->robotDrawMode),1);
+    addRadioButtonToGroup(drawMode,"Textured");
+    addRadioButtonToGroup(drawMode,"Wireframe");
+
 
 
 

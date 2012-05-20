@@ -108,11 +108,11 @@ void myRobot::draw() {
 							glNormal3f(-normal.x,-normal.y,-normal.z);
 
 							// Fecth the UV coordinates
-							myVertex s1=left.getVertexT(j); s1.translate(0.5,0,0); s1.y=0;
-							myVertex c1=left.getVertexT(j+1); c1.translate(0.5,-0.5,0);
+							myVertex s1=*v1; s1.translate(0.5,0,0); s1.y=0;
+							myVertex c1=*v2; c1.translate(0.5,-0.5,0);
 							uvIndex++;
-							myVertex s2=right.getVertexT(j); s2.translate(0.5,0,0); s2.y=0;
-							myVertex c2=right.getVertexT(j+1); c2.translate(0.5,-0.5,0);
+							myVertex s2=*v3; s2.translate(0.5,0,0); s2.y=0;
+							myVertex c2=*v4; c2.translate(0.5,-0.5,0);
 
 							// Transformations of UV
 							s1.translate(-0.5,-0.5,0);
