@@ -5,6 +5,7 @@
 #include "myRobot.h"
 #include <math.h>
 #include <iostream>
+#include "myWindowWall.h"
 using namespace std;
 // Global ambient light (do not confuse with ambient component of individual lights)
 float globalAmbientLight[4] = {0, 0, 0, 1.0};
@@ -43,6 +44,7 @@ void LightingScene::init() {
     column = new myCylinder(14, 8, 1);
     clock = new myClock();
     robot = new myRobot(4);
+    windowWall= new myWindowWall();
 
     // Declare Materials
     boardMaterial = new boardAppearance();
@@ -51,7 +53,6 @@ void LightingScene::init() {
     wallMaterial = new wallAppearance();
     windowMaterial = new windowAppearance();
     marbleMaterial = new marbleAppearance();
-
     // set update rate
     setUpdatePeriod(100);
     timeSet = false;
@@ -99,7 +100,7 @@ void LightingScene::display() {
     // Robot
     robotMaterial= new robotAppearance(robotTexture);
     glPushMatrix();
-    	glTranslated(7.5, 5, 7.5);
+    	glTranslated(7.5, 0, 7.5);
     	robot->setDrawmode(robotDrawMode);
     	robotMaterial->apply();
     	robot->draw();
@@ -126,14 +127,9 @@ void LightingScene::display() {
 
     // Left Wall
     glPushMatrix();
-    glTranslated(0, 0, 7.5);
-    glRotated(90.0, 0, 1, 0);
-    glTranslated(0, 4, 0);
-    glRotated(90.0, 1, 0, 0);
-    glScaled(15, 0.2, 8);
-    windowMaterial->setTextureWrap(GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
-    windowMaterial->apply();
-    leftWall->drawCentered();
+    	windowMaterial->setTextureWrap(GL_CLAMP_TO_EDGE_SGIS, GL_CLAMP_TO_EDGE_SGIS);
+    	windowMaterial->apply();
+		windowWall->draw();
     glPopMatrix();
 
     //Plane Wall

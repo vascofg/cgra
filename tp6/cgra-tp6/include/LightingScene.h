@@ -10,10 +10,10 @@
 #include "myClock.h"
 #include "MyClockHand.h"
 #include "myRobot.h"
+#include "myWindowWall.h"
 #include <time.h>
 
-class LightingScene : public CGFscene
-{
+class LightingScene: public CGFscene {
 public:
 	// Setup the environment, materials and lights
 	void init();
@@ -21,16 +21,16 @@ public:
 	void initLights();
 	// Draw the primitives, apply the materials, etc
 	void display();
-        // update
-        void update(long millis);
+	// update
+	void update(long millis);
 	// free memory
 	~LightingScene();
-        void toggleSomething();
-        int light0on, lightBoardAon, lightBoardBon, clockon;
-        int robotTexture;
-        int robotDrawMode;
-        //Robot variables
-        void moveRobot(double rotAngle, double moveDist);
+	void toggleSomething();
+	int light0on, lightBoardAon, lightBoardBon, clockon;
+	int robotTexture;
+	int robotDrawMode;
+	//Robot variables
+	void moveRobot(double rotAngle, double moveDist);
 protected:
 	// ---- lights
 	CGFlight* light0;
@@ -44,8 +44,9 @@ protected:
 	Plane* boardA;
 	Plane* boardB;
 	myCylinder* column;
-        myClock* clock;
-        myRobot* robot;
+	myClock* clock;
+	myRobot* robot;
+	myWindowWall *windowWall;
 	// -- materials
 	boardAppearance* boardMaterial;
 	slidesAppearance* slidesMaterial;
@@ -54,10 +55,10 @@ protected:
 	windowAppearance* windowMaterial;
 	marbleAppearance* marbleMaterial;
 	robotAppearance* robotMaterial;
-        // -- time
-        time_t start,end;
-        bool timeSet;
-        float timeElapsed;
+	// -- time
+	time_t start, end;
+	bool timeSet;
+	float timeElapsed;
 };
 
 #endif
