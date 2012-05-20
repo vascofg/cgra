@@ -42,7 +42,7 @@ void myRobot::draw() {
 }
 
 void myRobot::update(long milis) {
-
+	// this update has supercow powers
 }
 
 void myRobot::computeCoords(vector<myVertex*> &coords,vector<myVertex*> &UVCoords,vector<myVertex*> &normals){
@@ -198,4 +198,27 @@ void myRobot::drawSides(){
 						}
 			glPopMatrix(); //  matrix of the 4 square faces
 				}
+}
+void  myRobot::setRotAngle(double angle){
+	rotAngle=angle;
+}
+
+double myRobot::getRotAngle(){
+	return rotAngle;
+}
+
+void myRobot::setMoveX(float moveX){
+	this->moveX=moveX;
+}
+
+void myRobot::setMoveZ(float moveZ){
+	this->moveZ=moveZ;
+}
+
+float myRobot::getMoveX(){
+	return moveX;
+}
+
+float myRobot::getMoveZ(){
+	return moveZ;
 }

@@ -196,15 +196,15 @@ void LightingScene::toggleSomething() {
 }
 
 void LightingScene::moveRobot(double rotAngle, double moveDist) {
-    robot->rotAngle += rotAngle;
+    robot->setRotAngle(robot->getRotAngle()+rotAngle);
     if(moveDist==1)
     {
-        robot->moveX += sin(robot->rotAngle*PI/180);
-        robot->moveZ += cos(robot->rotAngle*PI/180);
+        robot->setMoveX(robot->getMoveX() + sin(robot->getRotAngle()*PI/180));
+        robot->setMoveZ(robot->getMoveZ() + cos(robot->getRotAngle()*PI/180));
     }
     if(moveDist==-1)
     {
-        robot->moveX -= sin(robot->rotAngle*PI/180);
-        robot->moveZ -= cos(robot->rotAngle*PI/180);
+    	robot->setMoveX(robot->getMoveX() - sin(robot->getRotAngle()*PI/180));
+    	robot->setMoveZ(robot->getMoveZ() - cos(robot->getRotAngle()*PI/180));
     }
 }
