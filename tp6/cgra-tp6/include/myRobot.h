@@ -17,7 +17,12 @@ class myRobot : public CGFobject {
     double apothem;
     double heightTop;
     double topRadius;
-
+    vector<myVertex*> coords;
+    vector<myVertex*> UVCoords;
+    vector<myVertex*> normals;
+    void drawTop();
+    void drawBottom();
+    void computeCoords(vector<myVertex*> &coords,vector<myVertex*> &UVCoords,vector<myVertex*> &normals);
 public:
     double rotAngle;
     float moveX, moveZ;
@@ -27,7 +32,6 @@ public:
     void setDrawmode(int mode);
 };
 
-void computeUVPoints(vector<myVertex> &squareVertexs,vector<myVertex> &circleVertex);
 
 #endif	
 
