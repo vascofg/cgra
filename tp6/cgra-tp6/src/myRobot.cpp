@@ -15,7 +15,7 @@ myRobot::myRobot(int stacks) {
 }
 
 void myRobot::draw() {
-
+	if(drawMode==1) glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 	// (1) Some pre-calculus
 	int slices=12;
 	double baseAngle = (360 / (float)slices);
@@ -150,7 +150,7 @@ void myRobot::draw() {
 
 	// END ROBOT DRAW ->
 	glPopMatrix();
-
+    glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
 }
 
 void myRobot::update(long milis) {
@@ -201,4 +201,7 @@ void computeUVPoints(vector<myVertex> &squareVertexs,vector<myVertex> &circleVer
 		}
 	}
 
+}
+void myRobot::setDrawmode(int mode){
+	drawMode=mode;
 }

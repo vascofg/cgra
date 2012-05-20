@@ -9,12 +9,14 @@
 using namespace std;
 class myRobot : public CGFobject {
     int stacks;
+    int drawMode;
 public:
     double rotAngle;
     float moveX, moveZ;
     myRobot(int stacks);
     void draw();
     void update(long milis);
+    void setDrawmode(int mode);
     GLUquadricObj* quadric;
 	vector<myVertex> UVsquareVertexs, UVcircleVertexs;
 };

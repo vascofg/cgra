@@ -97,14 +97,13 @@ void LightingScene::display() {
 
     // ---- BEGIN Primitive drawing section
     // Robot
-
     robotMaterial= new robotAppearance(robotTexture);
     glPushMatrix();
     	glTranslated(7.5, 5, 7.5);
+    	robot->setDrawmode(robotDrawMode);
     	robotMaterial->apply();
     	robot->draw();
     glPopMatrix();
-
     // Clock
     glPushMatrix();
     glTranslated(7.5, 7, 0.3);
