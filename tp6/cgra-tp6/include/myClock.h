@@ -32,7 +32,6 @@ public:
 
     /* The draw method that draws the bast cylinder, the pointers and applies the texture */
     void draw();
-
     /** Updates the pointers positions
      * @param milis the time elapsed since the begining of the scene
      */

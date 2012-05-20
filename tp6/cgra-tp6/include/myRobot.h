@@ -86,7 +86,6 @@ public:
 
     /* Draw the top, the bottom and the sides of the robot */
     void draw();
-
     /**
      * Update function (not necessary)
      * @param milis the elapsed time
